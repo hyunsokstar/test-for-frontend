@@ -33,7 +33,6 @@ function TaskBoardTable({ }: Props) {
     // Error: [Immer] This object has been frozen and should not be mutated
 
 
-
     useEffect(() => {
         getAllGridDataForRowsForUsersTable(pageInfo.page);
     }, [pageInfo.page])
