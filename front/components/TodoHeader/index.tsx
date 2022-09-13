@@ -10,10 +10,11 @@ import MonthNum from '../MonthNum'
 
 type Props = {
     task_of_number: number;
+    clearButtonHandler : any
 }
 
 
-function TodoHeader({ task_of_number }: Props) {
+function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
     const [dayOfWeekIndex, setDaysOfTheWeekIndex] = useState<number>(0);
     const [utc_datetime, set_utc_datatime] = useState<number>(0);
     const [date, setDate] = useState("");
@@ -44,14 +45,20 @@ function TodoHeader({ task_of_number }: Props) {
     }
 
     return (
-        <div style={{display:"flex", justifyContent:"space-between", border:"1px solid red"}}>
+        <div style={{ display: "flex", justifyContent: "space-between", border: "1px solid red" }}>
             <div>
                 <MonthWeekDateNum
                     dayIndex={dayOfWeekIndex}
-                    utc_datetime={utc_datetime} />
+                    utc_datetime={utc_datetime}
+                />
             </div>
             <div>
-                {task_of_number}
+                <div>
+                    {task_of_number}
+                </div>
+                <div>
+                    <button onClick = {clearButtonHandler}>clear list</button>
+                </div>
             </div>
         </div>
     )

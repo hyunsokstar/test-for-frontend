@@ -6,15 +6,50 @@ import TodoList from '../components/TodoList'
 type Props = {}
 
 const sapme_todos = [
-  { todo: "할일1" },
-  { todo: "할일2" },
-  { todo: "할일3" },
+  { id: 1, todo: "할일1" },
+  { id: 2, todo: "할일2" },
+  { id: 3, todo: "할일3" },
 ]
 
 function front_test({ }: Props) {
-
   const [task_of_number, set_task_of_number] = useState(4)
-  const [data_for_todos, set_data_for_todos] = useState(sapme_todos);
+  const [data_for_todos, set_data_for_todos] = useState<any>(sapme_todos);
+  const [checked_list, set_checked_list] = useState<any>([])
+
+  const add_todo = (e: any) => {
+    const randomId = Math.random();
+
+    if (e.key === 'Enter') {
+      console.log('enter press check : ', e.target.value);
+      const todo = e.target.value;
+      set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo }]);
+    }
+
+  }
+
+  const checkHandler = (e: any) => {
+    const checked = e.target.checked;
+    const checked_id = e.target.id;
+
+    if (checked) {
+      console.log("체크 => 체크 취소");
+      set_checked_list((prev: any) => [...prev, checked_id])
+    } else {
+      console.log("체크 취소 => 체크 ");
+      const new_checked_list = checked_list.filter((chid: any) => {
+        if (chid !== checked_id) {
+          return checked_id;
+        }
+      })
+      set_checked_list(new_checked_list);
+    }
+
+  }
+
+  const clearButtonHandler = (e: any) => {
+    console.log("clearButtonHandler : ", clearButtonHandler);
+    set_data_for_todos([]);
+  }
 
   return (
     <div style={{
@@ -26,13 +61,18 @@ function front_test({ }: Props) {
       gap: '20px'
     }}>
       <div>
-        <TodoHeader task_of_number={task_of_number} />
+        <TodoHeader task_of_number={task_of_number} clearButtonHandler={clearButtonHandler} />
+      </div>
+
+      {/* <div>
+        {checked_list ? checked_list : ""}
+      </div> */}
+
+      <div>
+        <TodoInput add_todo={add_todo} />
       </div>
       <div>
-        <TodoInput />
-      </div>
-      <div>
-        <TodoList data_for_todos={data_for_todos} />
+        <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} />
       </div>
     </div>
   )

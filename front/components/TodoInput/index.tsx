@@ -1,18 +1,20 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+  add_todo: any
+}
 
-function TodoInput({ }: Props) {
+function TodoInput({ add_todo }: Props) {
   return (
     <div>
-      <form>
-        <input 
-        type="text" 
-        id="fname" 
-        name="fname" 
-        placeholder='Type your task' 
-        style={{ width: "100%", height:"40px", marginTop:"10px" }} />
-      </form>
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        placeholder=' + Type your task'
+        style={{ width: "100%", height: "40px", marginTop: "10px" }}
+        onKeyDown={add_todo}
+      />
     </div>
   )
 }
