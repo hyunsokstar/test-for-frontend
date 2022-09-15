@@ -34,7 +34,7 @@ const Img = styled.img`
     object-fit: ${(props: ImgProps) => props.objectFit === "none" ? "contain" : "fill"};
     width: "auto";
     height: "auto";
-    border: "10px solid blue";
+    border: "1px solid blue";
     aspect-ratio: "auto " + ${(props: ImgProps) => props.aspectRatio};
     transform: rotate(${(props: ImgProps) => props.imageDegree + "deg"});
 `;

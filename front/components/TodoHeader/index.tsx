@@ -10,16 +10,13 @@ import MonthNum from '../MonthNum'
 
 type Props = {
     task_of_number: number;
-    clearButtonHandler : any
+    clearButtonHandler: any
 }
 
 
 function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
     const [dayOfWeekIndex, setDaysOfTheWeekIndex] = useState<number>(0);
     const [utc_datetime, set_utc_datatime] = useState<number>(0);
-    const [date, setDate] = useState("");
-    const [countOfTask, setCountOfTask] = useState("");
-    const [month, setMonth] = useState("");
 
     useEffect(() => {
         getHeaderInfoFromUrl()
@@ -57,7 +54,7 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
                     {task_of_number}
                 </div>
                 <div>
-                    <button onClick = {clearButtonHandler}>clear list</button>
+                    <button onClick={clearButtonHandler}>clear list</button>
                 </div>
             </div>
         </div>
