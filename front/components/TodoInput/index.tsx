@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 
 type Props = {
   add_todo: any,
-  inputValue: any
+  inputValue: any,
+  setInputValue: any
 }
 
 function TodoInput({ add_todo ,  inputValue, setInputValue}: Props) {

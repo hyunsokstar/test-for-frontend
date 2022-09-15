@@ -5,7 +5,7 @@ import api from "../../utils/api"
 import TextEditor from '../../components/util/TextEditor'
 
 const sample_columns = [
-    { key: "email", name: "email", editor: TextEditor },
+    { key: "email", name: "email", editor: TextEditor, },
     { key: "name", name: "name", editor: TextEditor },
     { key: "email", name: "gender", editor: TextEditor },
     { key: "hobby", name: "hobby", editor: TextEditor },
