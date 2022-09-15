@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
@@ -27,6 +27,10 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
   const inputRef = useRef(null);
   const classes = useStyles();
 
+  useEffect(() => {
+    inputRef.current.focus();
+
+}, [])
 
   const inputHandler = (e: any) => {
     setInputValue(e.target.value)
@@ -44,6 +48,7 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
     inputRef.current.value=""
     console.log("my_value : ", my_value);
     add_todo(e,my_value);
+    inputRef.current.focus();
   }
 
   return (
