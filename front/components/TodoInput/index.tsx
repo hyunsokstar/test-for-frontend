@@ -9,7 +9,6 @@ type Props = {
 function TodoInput({ add_todo ,  inputValue, setInputValue}: Props) {
 
   // const [inputValue, setInputValue] = useState("")
-
   const inputHandler = (e:any) => {
     // console.log("e : ", e);
     

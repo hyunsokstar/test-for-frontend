@@ -17,25 +17,33 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
     const [utc_datetime, set_utc_datatime] = useState<number>(0);
 
     useEffect(() => {
-        // getHeaderInfoFromUrl()
+        getHeaderInfoFromUrl()
     }, [])
 
     const getHeaderInfoFromUrl = async () => {
-        const url = `http://worldtimeapi.org/api/timezone/Asia/Seoul`
+        const url = 'http://worldtimeapi.org/api/timezone/Asia/Seoul'
 
         try {
-            const response = await axios.get(url);
-            // console.log("response : ", response);
-            // console.log("day_of_week : ", response.data.day_of_week);
-            // console.log("response.data.utc_datetime : ", response.data.utc_datetime);
-
-            if (response.data) {
+            axios.get(url).then((response)=>{
+                console.log("response : ", response);
                 setDaysOfTheWeekIndex(response.data.day_of_week);
                 set_utc_datatime(response.data.utc_datetime);
-            }
+                
+            });
+            // console.log("response : ", response);
+            // console.log("response.data.utc_datetime : ", response.data.utc_datetime);
+
+            // if (response.status == 200) {
+            //     console.log("요청 성공 !!");
+                
+            // } else {
+            //     console.log("hi");
+                
+            // }
 
         } catch (error) {
-
+            console.log("error : ", error);
+            
         }
     }
 
