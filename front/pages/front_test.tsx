@@ -3,6 +3,7 @@ import TodoHeader from '../components/TodoHeader'
 import TodoInput from '../components/TodoInput'
 import TodoList from '../components/TodoList'
 
+
 type Props = {}
 
 const sapme_todos = [
@@ -20,7 +21,6 @@ function front_test({ }: Props) {
     const randomId = Math.random();
 
     if (e.key === 'Enter') {
-      // console.log('enter press check : ', e.target.value);
       const todo = e.target.value;
       set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo }]);
     }
@@ -33,7 +33,6 @@ function front_test({ }: Props) {
     const checked_id = Number(target.id);
 
     if (checked) {
-      // console.log("체크 => 체크 취소");
       set_checked_list(([...checked_list, checked_id]))
     } else {
       console.log("체크 취소 => 체크 ");

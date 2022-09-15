@@ -2,7 +2,6 @@ import React from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
-// import DayOfWeeks from '../DayOfWeeks'
 import MonthWeekDateNum from '../MonthWeekDateNum'
 import DateNum from '../DateNum'
 import MonthNum from '../MonthNum'
@@ -42,22 +41,28 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
     }
 
     return (
-        <div style={{ display: "flex", justifyContent: "space-between", border: "1px solid red" }}>
-            <div>
-                <MonthWeekDateNum
-                    dayIndex={dayOfWeekIndex}
-                    utc_datetime={utc_datetime}
-                />
-            </div>
-            <div>
-                <div>
-                    {task_of_number}
+        <>
+            <head>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" />
+            </head>
+
+            <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid blue", "marginLeft":"10px", "marginTop":"10px" }}>
+                <div >
+                    <MonthWeekDateNum
+                        dayIndex={dayOfWeekIndex}
+                        utc_datetime={utc_datetime}
+                    />
                 </div>
-                <div>
-                    <button onClick={clearButtonHandler}>clear list</button>
+                <div style={{"color": "#d8dae1", "fontSize": "20px"}}>
+                    <div style={{ "fontFamily": "Trirong" , "fontSize":"20px", "marginTop":"10px", "marginRight":"10px"}}>
+                        {task_of_number} tasks
+                    </div>
+                    <div>
+                        <button onClick={clearButtonHandler}>clear list</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
