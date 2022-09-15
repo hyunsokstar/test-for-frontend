@@ -83,14 +83,14 @@ function front_test({ }: Props) {
       border: "2px solid blue",
       width: "60%",
       margin: "auto",
-      gap: '20px'
+      gap: 'px'
     }}>
 
-      <div>
+      <div style={{padding: "10px"}}>
         <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} />
       </div>
 
-      <div>
+      <div >
         <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
       </div>
 

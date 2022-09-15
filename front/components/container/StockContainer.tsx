@@ -6,7 +6,7 @@ type Props = {}
 
 function StockContainer({ }: Props) {
     return (
-        <div style={{width: "100%", border:"1px solid green"}}>
+        <div style={{width: "100%", border:"0px solid green"}}>
             <ProductTable />
         </div>
     )

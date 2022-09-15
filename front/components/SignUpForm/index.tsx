@@ -77,7 +77,7 @@ function SignUpForm() {
                 <h2>회원 가입 11</h2>
             </header>
 
-            <div className="form" style={{width: "500px", border:"1px solid black", padding:"10px"}}>
+            <div className="form" style={{width: "500px", border:"0px solid black", padding:"10px"}}>
                 <div className="form-body">
                     <div className="email">
                         <label className="form__label" htmlFor="email" >Email </label>

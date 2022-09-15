@@ -42,7 +42,7 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
     return (
         <>
 
-            <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid blue", "marginLeft": "10px", "marginTop": "10px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid blue" }}>
                 <div>
                     <MonthWeekDateNum
                         dayIndex={dayOfWeekIndex}
@@ -50,7 +50,7 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
                     />
                 </div>
                 <div style={{ "color": "#d8dae1", "fontSize": "20px" }}>
-                    <div style={{ "fontFamily": "Trirong", "fontSize": "20px", "marginTop": "10px", "marginRight": "10px" }}>
+                    <div style={{ "fontFamily": "Trirong", "fontSize": "20px" }}>
                         {task_of_number} Tasks
                     </div>
                     <div style={{ "marginRight": "10px", "marginTop": "5px" }}>

@@ -10,7 +10,8 @@ function TodoInput({ add_todo ,  inputValue, setInputValue}: Props) {
   // const [inputValue, setInputValue] = useState("")
 
   const inputHandler = (e:any) => {
-    // console.log("e : ", e);    
+    // console.log("e : ", e);
+    
     setInputValue(e.target.value)
   }
 
@@ -26,7 +27,7 @@ function TodoInput({ add_todo ,  inputValue, setInputValue}: Props) {
         id="fname"
         name="fname"
         placeholder=' + Type your task'
-        style={{ width: "100%", height: "40px", marginTop: "10px", border: 0, fontSize: "25px", paddingLeft: "14px" }}
+        style={{ width: "100%", height: "40px", fontSize: "25px" , border:"0px solid black"}}
         onChange = {inputHandler}
         onKeyDown={(e) => key_down_handler(e)}
         value={inputValue}
