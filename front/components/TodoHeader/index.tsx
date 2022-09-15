@@ -60,7 +60,7 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
                         {/* <button>clear list</button> */}
                         {/* <button onClick={clearButtonHandler}>Contained</button> */}
                         <Button
-                            variant="contained"
+                            variant="clear"
                             onClick={clearButtonHandler}
                             color="error"
                         >Contained</Button>
