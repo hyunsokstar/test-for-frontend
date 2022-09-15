@@ -15,7 +15,7 @@ const MonthWeekDateNum = ({ dayIndex, utc_datetime }: IProps) => {
     const [dayOfWeeksArray, setdayOfWeeksArray] = useState(["Sun", "Mon", "Tusday", "Wed", "Thu", "Fri", "Sat"])
     var localDate = new Date(utc_datetime);
 
-    console.log("localdate : ", localDate);
+    // console.log("localdate : ", localDate);
 
 
     const dayNum = localDate.getDate();
@@ -29,7 +29,7 @@ const MonthWeekDateNum = ({ dayIndex, utc_datetime }: IProps) => {
             <div>
                 {dayIndex ? dayOfWeeksArray[dayIndex] : ""} {localDate ? dayNum + "th" : ""}
             </div>
-            <div style={{"color": "#d8dae1", "fontSize": "25px"}}>
+            <div style={{ "color": "#d8dae1", "fontSize": "25px" }}>
                 {monthNames[MonthNum]}
             </div>
         </div>

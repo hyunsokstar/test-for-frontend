@@ -17,7 +17,7 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
     const [utc_datetime, set_utc_datatime] = useState<number>(0);
 
     useEffect(() => {
-        getHeaderInfoFromUrl()
+        // getHeaderInfoFromUrl()
     }, [])
 
     const getHeaderInfoFromUrl = async () => {
@@ -25,9 +25,9 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
 
         try {
             const response = await axios.get(url);
-            console.log("response : ", response);
-            console.log("day_of_week : ", response.data.day_of_week);
-            console.log("response.data.utc_datetime : ", response.data.utc_datetime);
+            // console.log("response : ", response);
+            // console.log("day_of_week : ", response.data.day_of_week);
+            // console.log("response.data.utc_datetime : ", response.data.utc_datetime);
 
             if (response.data) {
                 setDaysOfTheWeekIndex(response.data.day_of_week);

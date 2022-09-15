@@ -19,20 +19,18 @@ function front_test({ }: Props) {
 
 
   const add_todo = (e: any) => {
+    // console.log("e add_todo:", e);    
     const randomId = Math.random();
-
-    console.log("e enter: ", e);
-    
+    // console.log("e enter: ", e);    
 
     if (e.key === 'Enter') {
-      console.log("입력 확인  : ", e.target.value);
+      // console.log("입력 확인  : ", e.target.value);
 
       const todo = e.target.value;
       set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo }]);
-
       setInputValue("")
     } else {
-      console.log("안걸려");
+      // console.log("안걸려");
     }
 
   }

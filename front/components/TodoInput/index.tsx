@@ -2,21 +2,19 @@ import React, { useState } from 'react'
 
 type Props = {
   add_todo: any,
-  inputValue: any,
-  setInputValue: any
+  inputValue: any
 }
 
-function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
+function TodoInput({ add_todo ,  inputValue, setInputValue}: Props) {
 
   // const [inputValue, setInputValue] = useState("")
 
-  const inputHandler = (e: any) => {
-    console.log("e : ", e.target.value);
-
+  const inputHandler = (e:any) => {
+    // console.log("e : ", e);    
     setInputValue(e.target.value)
   }
 
-  const key_down_handler = (e: any) => {
+  const key_down_handler = (e:any) => {
     add_todo(e)
     // setInputValue("")
   }
@@ -29,9 +27,9 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
         name="fname"
         placeholder=' + Type your task'
         style={{ width: "100%", height: "40px", marginTop: "10px", border: 0, fontSize: "25px", paddingLeft: "14px" }}
-        onChange={(e) => inputHandler(e)}
-        value= {inputValue}
+        onChange = {inputHandler}
         onKeyDown={(e) => key_down_handler(e)}
+        value={inputValue}
       />
     </div>
   )
