@@ -15,7 +15,7 @@ function front_test({ }: Props) {
           display: "flex",
           // justifyContent: "center",
           // alignItems: "center",
-          height: "100vh",
+          height: "80vh",
           width: "800px",
         }}>
           <TodosContainer2 />

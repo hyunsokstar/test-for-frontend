@@ -17,21 +17,32 @@ function TodosContainer2({ }: Props) {
     const [checked_list, set_checked_list] = useState<Array<number>>([]);
     const [inputValue, setInputValue] = useState("")
 
-    const add_todo = async (e: any) => {
+    const add_todo = async (e: any, todoData = "") => {
         const randomId = Math.random();
+        console.log("e.key : ", e.key);
+
+
+        let todo = todoData;
+
+        const time = await new Date();
+        const create_at_for_row = await time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
 
         if (e.key === 'Enter') {
-            // console.log("입력 확인  : ", e.target.value);
-            const todo = e.target.value;
+            todo = e.target.value;
+            if (todo === "") {
+                alert("할일을 입력해 주세요")
+            } else {
+                set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo, createdAt: create_at_for_row }]);
+                setInputValue("")
+            }
 
-            const time = await new Date();
-            const create_at_for_row = await time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
-
-
-            set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo, createdAt: create_at_for_row }]);
-            setInputValue("")
-        } else {
-            console.log("안걸려");
+        } else if (e.key === "icon") {
+            if (todoData !== "") {
+                set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo, createdAt: create_at_for_row }]);
+                setInputValue("")
+            } else {
+                alert("할일을 입력해 주세요 !")
+            }
         }
 
     }
@@ -101,7 +112,6 @@ function TodosContainer2({ }: Props) {
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <BottomContainer />
             </div>
-
         </div>
     )
 }
