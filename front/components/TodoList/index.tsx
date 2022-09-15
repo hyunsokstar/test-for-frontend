@@ -1,15 +1,24 @@
 import { update } from 'lodash'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import Checkbox from '@mui/material/Checkbox';
+
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+
+import ListItemText from '@mui/material/ListItemText';
+
 
 type Props = {
     data_for_todos: any
     checkHandler: any
-    checked_list : [{
-        id:number,
+    checked_list: [{
+        id: number,
         todo: string
     }]
 }
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
 function TodoList({ data_for_todos, checkHandler, checked_list }: Props) {
@@ -18,20 +27,24 @@ function TodoList({ data_for_todos, checkHandler, checked_list }: Props) {
 
     const todorow = (row: any) => {
         console.log("typeof row.id", typeof row.id);
-        
+
 
 
         const rowId = row.id
-        console.log("type of row.id : ", typeof(row.id));
-        
-       
+        console.log("type of row.id : ", typeof (row.id));
+
+
         return (
-            <div style={{ display: "flex", justifyContent: "flex-start", gap: "20px" }} key={row.id}>
-                <div>
-                    <input type="checkbox" id={row.id} onClick={checkHandler} key={row.id} />
-                </div>
-                
-                <div style={{ textDecoration: checked_list.includes(row.id) && 'line-through' }}>{row.todo}</div>
+            <div key={row.id}>
+                <ListItem style={{ display: "flex", justifyContent: "flex-start", gap: "20px" }}>
+
+
+                    <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} />
+                    <ListItemText id={row.id} primary={row.todo} style={{textDecoration: checked_list.includes(row.id) && 'line-through' }}/>
+                </ListItem>
+
+                {/* <div style={{ textDecoration: checked_list.includes(row.id) && 'line-through' }}>{row.todo}</div> */}
+
             </div>
         )
     }

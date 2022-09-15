@@ -54,7 +54,7 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
                 </div>
                 <div style={{ "color": "#d8dae1", "fontSize": "20px" }}>
                     <div style={{ "fontFamily": "Trirong", "fontSize": "20px", "marginTop": "10px", "marginRight": "10px" }}>
-                        {task_of_number} tasks
+                        {task_of_number} Tasks
                     </div>
                     <div style={{ "marginRight": "10px", "marginTop": "5px" }}>
                         {/* <button>clear list</button> */}
