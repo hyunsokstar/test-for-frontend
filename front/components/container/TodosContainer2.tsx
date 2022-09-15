@@ -17,21 +17,21 @@ function TodosContainer2({ }: Props) {
     const [checked_list, set_checked_list] = useState<Array<number>>([]);
     const [inputValue, setInputValue] = useState("")
 
-    const add_todo = (e: any) => {
+    const add_todo = async (e: any) => {
         const randomId = Math.random();
 
         if (e.key === 'Enter') {
             // console.log("입력 확인  : ", e.target.value);
             const todo = e.target.value;
 
-            const time = new Date();
-            const create_at_for_row = time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
+            const time = await new Date();
+            const create_at_for_row = await time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
 
 
             set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo, createdAt: create_at_for_row }]);
             setInputValue("")
         } else {
-            // console.log("안걸려");
+            console.log("안걸려");
         }
 
     }
@@ -81,7 +81,7 @@ function TodosContainer2({ }: Props) {
             display: "flex",
             flexDirection: "column",
             border: "2px solid blue",
-            width: "60%",
+            width: "100%",
             margin: "auto",
             gap: '5px'
         }}>
@@ -90,7 +90,7 @@ function TodosContainer2({ }: Props) {
                 <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} />
             </div>
 
-            <div >
+            <div>
                 <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
             </div>
 
