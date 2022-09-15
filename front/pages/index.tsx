@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import TodoHeader from '../components/TodoHeader'
 import TodoInput from '../components/TodoInput'
 import TodoList from '../components/TodoList'
-
+import BottomContainer from '../components/Bottom'
 
 type Props = {}
 
@@ -96,6 +96,10 @@ function front_test({ }: Props) {
 
       <div>
         <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list} />
+      </div>
+      
+      <div style={{display:"flex", justifyContent:"center"}}>
+        <BottomContainer />
       </div>
 
     </div>
