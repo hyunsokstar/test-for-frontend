@@ -3,8 +3,7 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import MonthWeekDateNum from '../MonthWeekDateNum'
-import DateNum from '../DateNum'
-import MonthNum from '../MonthNum'
+import Button from '@mui/material/Button';
 
 
 type Props = {
@@ -42,23 +41,31 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
 
     return (
         <>
-            <head>
+            {/* <head>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" />
-            </head>
+            </head> */}
 
-            <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid blue", "marginLeft":"10px", "marginTop":"10px" }}>
-                <div >
+            <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid blue", "marginLeft": "10px", "marginTop": "10px" }}>
+                <div>
                     <MonthWeekDateNum
                         dayIndex={dayOfWeekIndex}
                         utc_datetime={utc_datetime}
                     />
                 </div>
-                <div style={{"color": "#d8dae1", "fontSize": "20px"}}>
-                    <div style={{ "fontFamily": "Trirong" , "fontSize":"20px", "marginTop":"10px", "marginRight":"10px"}}>
+                <div style={{ "color": "#d8dae1", "fontSize": "20px" }}>
+                    <div style={{ "fontFamily": "Trirong", "fontSize": "20px", "marginTop": "10px", "marginRight": "10px" }}>
                         {task_of_number} tasks
                     </div>
-                    <div>
-                        <button onClick={clearButtonHandler}>clear list</button>
+                    <div style={{ "marginRight": "10px", "marginTop": "5px" }}>
+                        {/* <button>clear list</button> */}
+                        {/* <button onClick={clearButtonHandler}>Contained</button> */}
+                        <Button
+                            variant="contained"
+                            onClick={clearButtonHandler}
+                            color="error"
+                        >Contained</Button>
+
+
                     </div>
                 </div>
             </div>

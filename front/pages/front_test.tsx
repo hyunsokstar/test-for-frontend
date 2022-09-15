@@ -49,6 +49,17 @@ function front_test({ }: Props) {
   const clearButtonHandler = () => {
     console.log("clearButtonHandler : ", clearButtonHandler);
     set_data_for_todos([]);
+
+    const new_data_for_todos_for_delete = data_for_todos.filter((row:any)=> {
+      // return row
+
+      if(!checked_list.includes(row.id)){
+        return row;
+      }
+
+    })
+    set_data_for_todos(new_data_for_todos_for_delete);
+
   }
 
   return (
@@ -62,7 +73,7 @@ function front_test({ }: Props) {
     }}>
 
       <div>
-        <TodoHeader task_of_number={task_of_number} clearButtonHandler={clearButtonHandler} />
+        <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} />
       </div>
 
       <div>
