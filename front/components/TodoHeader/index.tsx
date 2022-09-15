@@ -41,9 +41,6 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
 
     return (
         <>
-            {/* <head>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" />
-            </head> */}
 
             <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid blue", "marginLeft": "10px", "marginTop": "10px" }}>
                 <div>
