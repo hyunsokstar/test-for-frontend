@@ -69,11 +69,12 @@ function TodosContainer2({ }: Props) {
     const clearButtonHandler = () => {
         console.log("clearButtonHandler : ", clearButtonHandler);
 
-
-        set_data_for_todos([]);
+        // set_data_for_todos([]);
         if (checked_list.length === 0) {
             alert("삭제할 row를 선택해 주세요 !!");
             return;
+        } else {
+            set_data_for_todos([]);
         }
 
         const new_data_for_todos_for_delete = data_for_todos.filter((row: any) => {
