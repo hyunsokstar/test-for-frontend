@@ -14,26 +14,27 @@ const sapme_todos = [
 function front_test({ }: Props) {
   const [task_of_number, set_task_of_number] = useState(4)
   const [data_for_todos, set_data_for_todos] = useState<any>(sapme_todos);
-  const [checked_list, set_checked_list] = useState([])
+  const [checked_list, set_checked_list] = useState<Array<number>>([]);
 
   const add_todo = (e: any) => {
     const randomId = Math.random();
 
     if (e.key === 'Enter') {
-      console.log('enter press check : ', e.target.value);
+      // console.log('enter press check : ', e.target.value);
       const todo = e.target.value;
       set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo }]);
     }
 
   }
 
-  const checkHandler = (e: any) => {
-    const checked = e.target.checked;
-    const checked_id = Number(e.target.id);
+  const checkHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    const checked = target.checked;
+    const checked_id = Number(target.id);
 
     if (checked) {
-      console.log("체크 => 체크 취소");
-      set_checked_list((prev: any) => [...prev, checked_id])
+      // console.log("체크 => 체크 취소");
+      set_checked_list(([...checked_list, checked_id]))
     } else {
       console.log("체크 취소 => 체크 ");
       const new_checked_list = checked_list.filter((chid: any) => {
@@ -46,7 +47,7 @@ function front_test({ }: Props) {
 
   }
 
-  const clearButtonHandler = (e: any) => {
+  const clearButtonHandler = () => {
     console.log("clearButtonHandler : ", clearButtonHandler);
     set_data_for_todos([]);
   }
@@ -72,7 +73,7 @@ function front_test({ }: Props) {
       <div>
         <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list} />
       </div>
-      
+
     </div>
   )
 }
