@@ -16,7 +16,10 @@ http://127.0.0.1:3000/
 디자인 라이브러리:
 material-ui
 
-노트 정리:
-http://www.skilnote-for-starter.shop/wm/myshortcut/front-test/1
-
 </pre>
+
+노트 정리:
+<br>
+<a>
+http://www.skilnote-for-starter.shop/wm/myshortcut/front-test/1
+</a>

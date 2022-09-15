@@ -13,16 +13,26 @@ const sapme_todos = [
 ]
 
 function front_test({ }: Props) {
-  const [task_of_number, set_task_of_number] = useState(4)
   const [data_for_todos, set_data_for_todos] = useState<any>(sapme_todos);
   const [checked_list, set_checked_list] = useState<Array<number>>([]);
+  const [inputValue, setInputValue] = useState("")
+
 
   const add_todo = (e: any) => {
     const randomId = Math.random();
 
+    console.log("e enter: ", e);
+    
+
     if (e.key === 'Enter') {
+      console.log("입력 확인  : ", e.target.value);
+
       const todo = e.target.value;
       set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo }]);
+
+      setInputValue("")
+    } else {
+      console.log("안걸려");
     }
 
   }
@@ -48,12 +58,18 @@ function front_test({ }: Props) {
 
   const clearButtonHandler = () => {
     console.log("clearButtonHandler : ", clearButtonHandler);
+    
+    
     set_data_for_todos([]);
-
-    const new_data_for_todos_for_delete = data_for_todos.filter((row:any)=> {
+    if(checked_list.length === 0 ){
+      alert("삭제할 row를 선택해 주세요 !!");
+      return;
+    }
+    
+    const new_data_for_todos_for_delete = data_for_todos.filter((row: any) => {
       // return row
 
-      if(!checked_list.includes(row.id)){
+      if (!checked_list.includes(row.id)) {
         return row;
       }
 
@@ -77,7 +93,7 @@ function front_test({ }: Props) {
       </div>
 
       <div>
-        <TodoInput add_todo={add_todo} />
+        <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
       </div>
 
       <div>
