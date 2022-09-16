@@ -104,11 +104,8 @@ function TodosContainer2({ }: Props) {
             gap: '5px'
         }}>
 
-            <div style={{ padding: "10px" }}>
+            <div style={{ padding: "0px" }}>
                 <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} />
-            </div>
-
-            <div>
                 <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
             </div>
 

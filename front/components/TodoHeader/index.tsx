@@ -49,8 +49,7 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
 
     return (
         <>
-
-            <div style={{ display: "flex", justifyContent: "space-between", border: "1px solid #F0F4F8", backgroundColor: "#FBFBFF", }}>
+            <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid #F0F4F8", backgroundColor: "#FBFBFF", }}>
                 <div>
                     <MonthWeekDateNum
                         dayIndex={dayOfWeekIndex}
@@ -68,8 +67,6 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
                             color="error"
                         >Clear
                         </Button>
-
-
                     </div>
                 </div>
             </div>
