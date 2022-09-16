@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import TodosContainer2 from '../components/container/TodosContainer2'
+import TodosContainer from '../components/container/TodosContainer'
 
 type Props = {}
 
@@ -12,10 +12,10 @@ function front_test({ }: Props) {
         <div style={{
           backgroundColor: "white",
           display: "flex",
-          height: "80vh",
+          height: "50vh",
           width: "800px",
         }}>
-          <TodosContainer2 />
+          <TodosContainer />
         </div>
       </div>
     </>

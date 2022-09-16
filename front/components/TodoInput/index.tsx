@@ -15,10 +15,11 @@ type Props = {
 
 const useStyles = makeStyles((theme) => ({
   iconForInputEnter: {
+    // padding: "10px",
     transition: theme.transitions.create(["border-radius", "background-color"]),
     "&:hover": {
       borderRadius: "4px",
-      backgroundColor: "#F7F2F1"
+      backgroundColor: "#e3dbd9"
     }
   }
 }));
@@ -53,8 +54,8 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
 
   return (
     <div style={{ display: "flex",padding:"10px", border: "1px solid lightgray" }}>
-      <div style={{ backgroundColor: "white", display: "flex", textAlign: "center", alignItems: "center", marginLeft: "10px", padding: "5px" }} className={classes.iconForInputEnter}>
-        <AddIcon style={{ opacity: "0.6" }} onClick={add_todo2} />
+      <div style={{ backgroundColor: "white", display: "flex", textAlign: "center", alignItems: "center", marginLeft: "10px", padding: "10px" }} >
+        <AddIcon style={{ opacity: "0.6" }} onClick={add_todo2} className={classes.iconForInputEnter}/>
 
         <input
           ref={inputRef}
@@ -62,7 +63,7 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
           id="fname"
           name="fname"
           placeholder=' Type your task'
-          style={{ width: "100%", height: "40px", fontSize: "25px", outline: "none", padding: "10px", border:"none" }}
+          style={{ width: "100%", height: "40px", fontSize: "25px", outline: "none", padding: "18px", border:"none" }}
           onChange={inputHandler}
           onKeyDown={(e) => key_down_handler(e)}
           value={inputValue}
