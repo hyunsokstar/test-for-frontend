@@ -8,7 +8,7 @@ function front_test({ }: Props) {
 
   return (
     <>
-      <div style={{ width: "100%", border: "0px solid blue", display: "flex", justifyContent: "center", backgroundColor: "#5d5fea" }}>
+      <div style={{ width: "100%", border: "0px solid blue", display: "flex", justifyContent: "center", backgroundColor: "#5d5fea", gap: "10px" }}>
         <div style={{
           backgroundColor: "white",
           display: "flex",

@@ -6,7 +6,7 @@ function BottomContainer({}: Props) {
   return (
     <div>
         Inspired  
-        <span style={{color: "red", marginLeft: "8px"}}>by Ennio Dybeli</span>
+        <span style={{color: "red",padding:"10px", marginLeft: "8px"}}>by Ennio Dybeli</span>
     </div>
   )
 }
