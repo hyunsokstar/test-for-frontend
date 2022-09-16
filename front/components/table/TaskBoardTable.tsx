@@ -15,7 +15,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 type Props = {}
 
-function TaskBoardTable({ }: Props) {
+function 
+TaskBoardTable({ }: Props) {
     const columns = useSelector((state: RootState) => state.task_board.columns);
     const basicRows = useSelector((state: RootState) => state.task_board.basicRows);
     let selectedRows = useSelector((state: RootState) => state.task_board.selectedRows);

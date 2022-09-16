@@ -1,7 +1,9 @@
 import type { AppProps } from "next/app";
 import CssBaseline from "@mui/material/CssBaseline";
+import { wrapper } from "../store";
 
-const App = (props: AppProps) => {
+
+const MyApp = (props: AppProps) => {
   const { Component, pageProps } = props;
 
   return (
@@ -12,5 +14,5 @@ const App = (props: AppProps) => {
   );
 };
 
-export default App;
+export default wrapper.withRedux(MyApp)
 
