@@ -24,33 +24,33 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
         const url = 'http://worldtimeapi.org/api/timezone/Asia/Seoul'
 
         try {
-            axios.get(url).then((response)=>{
+            axios.get(url).then((response) => {
                 console.log("response : ", response);
                 setDaysOfTheWeekIndex(response.data.day_of_week);
                 set_utc_datatime(response.data.utc_datetime);
-                
+
             });
             // console.log("response : ", response);
             // console.log("response.data.utc_datetime : ", response.data.utc_datetime);
 
             // if (response.status == 200) {
             //     console.log("요청 성공 !!");
-                
+
             // } else {
             //     console.log("hi");
-                
+
             // }
 
         } catch (error) {
             console.log("error : ", error);
-            
+
         }
     }
 
     return (
         <>
 
-            <div style={{ display: "flex", justifyContent: "space-between", border: "1px solid #F0F4F8", backgroundColor:"#FBFBFF", }}>
+            <div style={{ display: "flex", justifyContent: "space-between", border: "1px solid #F0F4F8", backgroundColor: "#FBFBFF", }}>
                 <div>
                     <MonthWeekDateNum
                         dayIndex={dayOfWeekIndex}

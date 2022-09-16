@@ -1,3 +1,5 @@
+import { identity } from 'lodash'
+import { number } from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import TodoHeader from '../components/TodoHeader'
 import TodoInput from '../components/TodoInput'
@@ -5,6 +7,11 @@ import TodoList from '../components/TodoList'
 
 
 type Props = {}
+
+interface sample_todos {
+  id: number;
+  todo: string;
+}
 
 const sapme_todos = [
   { id: 1, todo: "할일1" },
@@ -47,11 +54,12 @@ function front_test({ }: Props) {
   }
 
   const clearButtonHandler = () => {
-    console.log("clearButtonHandler : ", clearButtonHandler);
+    console.log("clearButtonHandler2 : ", clearButtonHandler);
     set_data_for_todos([]);
 
     const new_data_for_todos_for_delete = data_for_todos.filter((row:any)=> {
       // return row
+      console.log("row for delete : ", row);
 
       if(!checked_list.includes(row.id)){
         return row;

@@ -6,6 +6,12 @@ import BottomContainer from '../../components/Bottom'
 
 type Props = {}
 
+interface row_type_for_delete_row {
+    id: number;
+    todo: string;
+    createdAt: string;
+}
+
 const sapme_todos = [
     { id: 1, todo: "할일1", createdAt: "3:44 pm" },
     { id: 2, todo: "할일2", createdAt: "3:45 pm" },
@@ -77,8 +83,8 @@ function TodosContainer2({ }: Props) {
             set_data_for_todos([]);
         }
 
-        const new_data_for_todos_for_delete = data_for_todos.filter((row: any) => {
-
+        const new_data_for_todos_for_delete = data_for_todos.filter((row: row_type_for_delete_row) => {
+            // console.log("row : ",row);
             if (!checked_list.includes(row.id)) {
                 return row;
             }
