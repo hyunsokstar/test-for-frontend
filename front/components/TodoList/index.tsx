@@ -1,12 +1,13 @@
-import { update } from 'lodash'
 import React, { useState } from 'react'
-import { useEffect } from 'react'
 import Checkbox from '@mui/material/Checkbox';
-
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-
 import ListItemText from '@mui/material/ListItemText';
+
+interface todo_type_for_list {
+    id: number;
+    todo: string;
+    createdAt: string
+}
 
 
 type Props = {
@@ -35,14 +36,13 @@ function TodoList({ data_for_todos, checkHandler, checked_list }: Props) {
                     <ListItemText id={row.id} primary={row.todo} style={{ textDecoration: checked_list.includes(row.id) && 'line-through' }} />
                     <div edge="end"> {row.createdAt} </div>
                 </ListItem>
-                {/* <div style={{ textDecoration: checked_list.includes(row.id) && 'line-through' }}>{row.todo}</div> */}
             </div>
         )
     }
 
     return (
         <div>
-            {data_for_todos && data_for_todos.map((row: any) => {
+            {data_for_todos && data_for_todos.map((row: todo_type_for_list) => {
                 return todorow(row)
             })}
         </div>

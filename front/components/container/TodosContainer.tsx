@@ -73,9 +73,6 @@ function TodosContainer({ }: Props) {
     }
 
     const clearButtonHandler = () => {
-        console.log("clearButtonHandler : ", clearButtonHandler);
-
-        // set_data_for_todos([]);
         if (checked_list.length === 0) {
             alert("삭제할 row를 선택해 주세요 !!");
             return;
@@ -84,7 +81,6 @@ function TodosContainer({ }: Props) {
         }
 
         const new_data_for_todos_for_delete = data_for_todos.filter((row: row_type_for_delete_row) => {
-            // console.log("row : ",row);
             if (!checked_list.includes(row.id)) {
                 return row;
             }
