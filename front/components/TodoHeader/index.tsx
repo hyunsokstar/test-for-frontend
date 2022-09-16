@@ -49,18 +49,18 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
 
     return (
         <>
-            <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid #F0F4F8", backgroundColor: "#FBFBFF", }}>
+            <div style={{ display: "flex", justifyContent: "space-between", border: "0px solid #F0F4F8", backgroundColor: "#FBFBFF" }}>
                 <div>
                     <MonthWeekDateNum
                         dayIndex={dayOfWeekIndex}
                         utc_datetime={utc_datetime}
                     />
                 </div>
-                <div style={{ "color": "#d8dae1", "fontSize": "20px" }}>
+                <div style={{ "color": "#d8dae1", "fontSize": "20px" ,textAlign:"center"}}>
                     <div style={{ "fontFamily": "Trirong", "fontSize": "20px" }}>
-                        {task_of_number} Tasks
+                        &nbsp;&nbsp; {task_of_number} Tasks
                     </div>
-                    <div style={{ "marginRight": "10px", "marginTop": "5px" }}>
+                    <div style={{ "marginRight": "5px", "marginTop": "5px" }}>
                         <Button
                             variant="contained"
                             onClick={clearButtonHandler}
