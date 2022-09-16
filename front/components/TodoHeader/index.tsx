@@ -66,7 +66,7 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
                             onClick={clearButtonHandler}
                             // color="#FC6E6F"
                             width= {"200px"}
-                            style={{backgroundColor:"#FC6E6F", color:"white"}}
+                            style={{backgroundColor:"#FC6E6F", color:"white", marginTop:"10px"}}
                         >Clear List
                         </Button>
                     </div>
