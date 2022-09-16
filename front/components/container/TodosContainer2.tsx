@@ -92,7 +92,7 @@ function TodosContainer2({ }: Props) {
         <div style={{
             display: "flex",
             flexDirection: "column",
-            border: "2px solid blue",
+            border: "0px solid blue",
             width: "100%",
             margin: "auto",
             gap: '5px'
@@ -113,6 +113,7 @@ function TodosContainer2({ }: Props) {
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <BottomContainer />
             </div>
+
         </div>
     )
 }
