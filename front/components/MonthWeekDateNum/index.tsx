@@ -20,17 +20,19 @@ const MonthWeekDateNum = ({ dayIndex, utc_datetime, task_of_number, clearButtonH
     const MonthNum = localDate.getMonth();
 
     return (
-        <div style={{ display: "flex",justifyContent:"space-between", border: "1px solid #f0eaeaf", "width": "100%", "fontFamily": "Trirong", "fontSize": "40px", "color": "#7190f0" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", border: "1px solid #f0eaeaf", "width": "100%", "fontFamily": "Trirong", "fontSize": "40px", "color": "#7190f0", marginLeft: "10px" }}>
             <div>
                 {dayIndex ? dayOfWeeksArray[dayIndex] : ""} {localDate ? dayNum + "th" : ""} <br />
-                {monthNames[MonthNum]}
+                <span style={{ "color": "#d8dae1", "fontSize": "25px", marginRight: "18px" }}>
+                    {monthNames[MonthNum]}
+                </span>
             </div>
-            <div style={{ "color": "#d8dae1", "fontSize": "25px" , marginRight:"10px"}}>
+            <div style={{ "color": "#d8dae1", "fontSize": "25px", marginRight: "18px" }}>
                 &nbsp;&nbsp; {task_of_number} Tasks <br />
                 <Button
                     variant="contained"
                     onClick={clearButtonHandler}
-                    style={{ backgroundColor: "#FC6E6F", color: "white", marginTop:"36px" }}
+                    style={{ backgroundColor: "#FC6E6F", color: "white", marginTop: "36px" }}
                 >
                     Clear List
                 </Button>
