@@ -200,17 +200,17 @@ function searchModalForUser({ row, column, onRowChange }: any) {
 
         console.log("ids_array_before : ", ids_array_before);
         console.log("ids_array_after : ", ids_array_after);
-        
+
 
         // 뺀 아이디 추출
         const ids_for_update_after_cancel = ids_array_before.filter(x => !ids_array_after.includes(x))
 
         console.log("ids_for_update_after_cancel : ", ids_for_update_after_cancel);
-        
+
 
         if (ids_array_before.length > ids_array_after.length) {
             console.log("hi");
-            
+
             rows_for_register = basicRowsForTaskBoard.filter((row: any) => {
                 if (!ids_for_update_after_cancel.includes(row._id)) {
                     return row
@@ -231,7 +231,7 @@ function searchModalForUser({ row, column, onRowChange }: any) {
                 taskBoardSlice.actions.setSelectedRows(selectedRows)
             )
 
-            
+
         } else {
 
             dispatch(
@@ -286,6 +286,22 @@ function searchModalForUser({ row, column, onRowChange }: any) {
         setSelectedRows(selectedRows_for_users_table);
     }, [selectedRows_for_users_table])
 
+    const check_and_set_color_for_row = (e:any) => {
+        console.log("e : ", e);
+        console.log("e : ", e._id);
+        console.log("selectedRows : ", selectedRows);
+        let tmp: Set<any> = new Set(selectedRows);
+        
+        if(selectedRows.has(e._id)){
+            console.log("hi");
+            tmp.delete(e._id)
+        } else {
+            tmp.add(e._id)
+        }
+
+        setSelectedRows(tmp)
+
+    }
 
     return (
         <div>
@@ -312,13 +328,11 @@ function searchModalForUser({ row, column, onRowChange }: any) {
                         onRowsChange={(data, idx) => { onRowsChangeHandler(data, idx) }}
                         rowKeyGetter={(row) => row._id || ""}
                         selectedRows={selectedRows}
-                        onSelectedRowsChange={(row) => {
-
-                            
-
-                            setSelectedRows(row)
-                        }}
-
+                        // onSelectedRowsChange={(row) => {
+                        //     setSelectedRows(row)
+                        // }}
+                        onRowClick={check_and_set_color_for_row}
+                        // onClick ={check_and_set_color_for_row}
                     />
 
                     <div>
