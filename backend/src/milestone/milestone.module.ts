@@ -1,3 +1,4 @@
+import { MilestonsRepository } from './repositorys/milestone.repository';
 import { Module } from '@nestjs/common';
 import { MilestoneController } from './controllers/milestone.controller';
 import { MilestoneService } from './services/milestone.service';
@@ -15,7 +16,8 @@ import { task_management_table, task_management_table_schema } from './schemas/t
   ],
 
   controllers: [MilestoneController],
-  providers: [MilestoneService]
+  providers: [MilestoneService, MilestonsRepository],
+  
 })
 
 export class MilestoneModule { }

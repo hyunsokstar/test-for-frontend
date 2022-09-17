@@ -34,7 +34,7 @@ export const task_management_table_schema = SchemaFactory.createForClass(task_ma
 
 task_management_table_schema.virtual('readOnlyData').get(function (this: task_management_table) {
   return {
-    id: this.task_title,
-    todo: this.task_status
+    task_title: this.task_title,
+    task_status: this.task_status
   }
 })

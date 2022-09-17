@@ -212,7 +212,7 @@ export class CatsService {
 
   async deleteMultiUsers(data: any) {
     const ids_for_delete = data.ids_for_delete;
-    const result = await this.catsRepository.deleteUsersByIdsArray(ids_for_delete);    
+    const result = await this.catsRepository.deleteUsersByIdsArray(ids_for_delete);
 
     console.log('result : ', result);
 
@@ -222,7 +222,7 @@ export class CatsService {
   async deleteRowsForTaskBoard(data: any) {
     const ids_for_delete = data.ids_for_delete;
     // const result = await this.catsRepository.deleteUsersByIdsArray(ids_for_delete);    
-    const result = await this.catsRepository.deleteRowsForTaskBoard(ids_for_delete);    
+    const result = await this.catsRepository.deleteRowsForTaskBoard(ids_for_delete);
 
     console.log('result : ', result);
 
@@ -235,7 +235,7 @@ export class CatsService {
 
 
     console.log("password at aservice: ", password);
-    
+
 
     const isCatExist = await this.catsRepository.existsByEmail(email);
 

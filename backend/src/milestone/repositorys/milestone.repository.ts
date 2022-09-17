@@ -1,16 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+
 import { Model } from 'mongoose';
 import { task_management_table } from '../schemas/task_management_table.schema';
 
 
 @Injectable()
 export class MilestonsRepository {
+    async investigate_existence_by_id_for_save_rows_for_task_management_table(id: any) {
+
+        const result = await this.task_management_table_model.exists({ _id: id });
+        if (result) return true
+        else return false
+        // throw new Error('Method not implemented.');
+    }
     constructor(
         @InjectModel(task_management_table.name) private readonly task_management_table_model: Model<task_management_table>,
     ) { }
 
-    static allListForMileStonTable() {
+
+    async save_rows_for_task_management_table(row: any) {
+        // console.log("row : ", row);
+        return await this.task_management_table_model.create(row);
+    }
+
+    async all_list_for_task_management_table() {
         // console.log("레포지터리 실행 확인 for milestone !");
         const dummy_list_for_milestone = [
             {

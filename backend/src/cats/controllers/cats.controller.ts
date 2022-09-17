@@ -48,7 +48,6 @@ export class CatsController {
     }
   }
 
-
   @UseGuards(JwtAuthGuard)
   @Get()
   getCurrentCat(@CurrentUser() cat) {
