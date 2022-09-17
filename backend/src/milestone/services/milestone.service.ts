@@ -36,9 +36,9 @@ export class MilestoneService {
         return `${save_count} row 저장 성공 !`
     }
 
-    allListForMileStoneTable() {
+    get_rows_from_task_management_table() {
         console.log("마일 스톤 서비스 호출 !");
-        const allListForMileStone = this.milestoneRepository.all_list_for_task_management_table();
+        const allListForMileStone = this.milestoneRepository.get_rows_from_task_management_table();
 
         return allListForMileStone
         // throw new Error('Method not implemented.');

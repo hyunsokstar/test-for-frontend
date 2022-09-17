@@ -64,8 +64,8 @@ export class CatsRepository {
             total_page: total_page2,
             columns_list
         }
-
     }
+    
     async findAllColumnsWithoutPagination(table_name) {
         // const total_count = await this.columnsTableModel.find({ table_name: table_name }).count()
         // console.log("total_count, limit : ", total_count, limit);

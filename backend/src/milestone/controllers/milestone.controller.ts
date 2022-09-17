@@ -18,8 +18,8 @@ export class MilestoneController {
     ) { }
 
     @Get()
-    getMileStone() {
-        const allListForMileStone = this.milestoneService.allListForMileStoneTable();
+    get_rows_from_task_management_table() {
+        const allListForMileStone = this.milestoneService.get_rows_from_task_management_table();
         console.log("allListForMileStone : ", allListForMileStone);
         return allListForMileStone;
     }
@@ -31,5 +31,7 @@ export class MilestoneController {
         console.log("save_result_for_task_management_table : ", save_result_for_task_management_table);
         return save_result_for_task_management_table;
     }
+    
+
 
 }
