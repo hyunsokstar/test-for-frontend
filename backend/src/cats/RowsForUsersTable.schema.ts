@@ -46,7 +46,6 @@ export class RowsForUsersTable extends Document {
   test_complete: string;
 
 
-
   readonly readOnlyData: {
     id: string;
     email: string;
