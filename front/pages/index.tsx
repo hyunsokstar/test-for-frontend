@@ -5,7 +5,7 @@ import TodosContainer from '../components/container/TodosContainer'
 type Props = {}
 
 function front_test({ }: Props) {
-
+``
   return (
     <>
       <div style={{ width: "100%", border: "0px solid blue", display: "flex", justifyContent: "center", backgroundColor: "#5d5fea", gap: "10px" }}>
@@ -14,7 +14,7 @@ function front_test({ }: Props) {
           justifyContent:"center",
           alignItems:"center",
           display: "flex",
-          height: "100vh",
+          height: "100%",
           width: "800px",
         }}>
           <TodosContainer />
