@@ -6,7 +6,6 @@ import BottomContainer from '../Bottom'
 // axios 작업
 import axios from "axios";
 import api from "../../utils/api"
-import todo_type_for_list from "../TodoList"
 import { type_for_todo_row } from "../../common/type_for_todos"
 
 type Props = {}
@@ -48,7 +47,7 @@ function TodosContainer({ }: Props) {
                 { withCredentials: true }
             );
             // const rows_data = response.data.data.rows_for_grid
-            console.log("response : ", response);
+            // console.log("response : ", response);
 
             if (response.data.success) {
                 const todo_data = response.data.data;
@@ -72,8 +71,26 @@ function TodosContainer({ }: Props) {
         }
     }
 
+    const save_request_to_server = async (todo:string) => {
+
+        const data_array = []
+        data_array.push({task_title:todo, task_status:"uncomplete"});
+
+        console.log("data_array : ", data_array);
+        
+
+        const response = await axios.post(`${api.milestone}/save_rows_for_task_management_table`, data_array, {
+            withCredentials: true,
+        });
+
+        console.log("response.data : ", response.data);
+
+    }
 
     const add_todo = async (e: any, todoData: string) => {
+
+        // alert("add_todo 실행")
+
         const randomId = Math.random();
         console.log("typeof randomId : ", typeof randomId);
         // console.log("e: ", e.target.value);
@@ -95,12 +112,15 @@ function TodosContainer({ }: Props) {
             if (todo === "") {
                 alert("할일을 입력해 주세요")
             } else {
+
+                save_request_to_server(todo);
                 set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
                 setInputValue("")
             }
         } else if (e.key === "icon") {
             if (todo !== "") {
                 set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
+                save_request_to_server(todo);
                 setInputValue("")
             } else {
                 alert("할일을 입력해 주세요 !")
@@ -165,7 +185,7 @@ function TodosContainer({ }: Props) {
             // gap: '5px'
         }}>
 
-            <div style={{ padding: "0px", marginBottom: "10px" , borderBottom:"1px solid #e4dedeff"}}>
+            <div style={{ padding: "0px", marginBottom: "10px", borderBottom: "1px solid #e4dedeff" }}>
                 <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} dayIndex={0} utc_datetime={0} />
             </div>
             <div>

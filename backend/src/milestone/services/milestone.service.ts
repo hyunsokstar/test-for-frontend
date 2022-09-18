@@ -26,6 +26,10 @@ export class MilestoneService {
         } else {
             console.log("row 비존재 so 저장");
             data.map(async (row) => {
+
+                console.log("row : ", row);
+                
+
                 await this.milestoneRepository.save_rows_for_task_management_table({
                     task_title: row.task_title,
                     task_status: row.task_status

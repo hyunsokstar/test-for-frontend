@@ -31,7 +31,5 @@ export class MilestoneController {
         console.log("save_result_for_task_management_table : ", save_result_for_task_management_table);
         return save_result_for_task_management_table;
     }
-    
-
 
 }

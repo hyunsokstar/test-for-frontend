@@ -25,7 +25,7 @@ function TodoHeader2({ task_of_number, clearButtonHandler }: Props) {
 
         try {
             axios.get(url).then((response) => {
-                console.log("response : ", response);
+                // console.log("response : ", response);
                 setDaysOfTheWeekIndex(response.data.day_of_week);
                 set_utc_datatime(response.data.utc_datetime);
 

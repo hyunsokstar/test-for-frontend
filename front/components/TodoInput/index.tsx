@@ -43,11 +43,9 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
   }
 
   const add_todo2 = () => {
-    // console.log("hi");
     const e = { key: "icon" }
     const my_value = inputRef.current.value;
     inputRef.current.value = ""
-    // console.log("my_value : ", my_value);
     add_todo(e, my_value);
     inputRef.current.focus();
   }
