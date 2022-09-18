@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
-import MonthWeekDateNum from '../MonthWeekDateNum'
+import HeaderContents from '../HeaderContents'
 import Button from '@mui/material/Button';
 
 
@@ -41,8 +41,9 @@ function TodoHeader2({ task_of_number, clearButtonHandler }: Props) {
     return (
         <>
             <div style={{ border: "0px solid #F0F4F8", backgroundColor: "#FBFBFF", marginBottom:"10px" }}>
-                <MonthWeekDateNum
-                    dayIndex={dayOfWeekIndex}
+                {/* <MonthWeekDateNum */}
+                <HeaderContents
+                dayIndex={dayOfWeekIndex}
                     utc_datetime={utc_datetime}
                     task_of_number={task_of_number}
                     clearButtonHandler= {clearButtonHandler}

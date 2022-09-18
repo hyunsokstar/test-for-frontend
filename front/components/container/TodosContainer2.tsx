@@ -45,8 +45,7 @@ function TodosContainer({ }: Props) {
                 `${api.milestone}/`,
                 { withCredentials: true }
             );
-            // const rows_data = response.data.data.rows_for_grid
-            console.log("response : ", response);
+            // console.log("response : ", response);
             
             if (response.data.success) {
                 const todo_data = response.data.data;
