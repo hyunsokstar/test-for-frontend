@@ -53,17 +53,16 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
   }
 
   return (
-    <div style={{ display: "flex",padding:"10px", borderBottom: "1px solid #F7F8FE" }}>
-      <div style={{ backgroundColor: "white", display: "flex", textAlign: "center", alignItems: "center", marginLeft: "2px", padding: "10px" }} >
+    <div style={{ display: "flex",padding:"10px", borderBottom: "1px solid #F7F8FE" , margin:"0px", borderBottom:"1px solid #e4dedeff"}}>
+      <div style={{ backgroundColor: "white", display: "flex", textAlign: "center", alignItems: "center", paddingLeft: "10px" }} >
         <AddIcon style={{ opacity: "0.6" }} onClick={add_todo2} className={classes.iconForInputEnter}/>
-
         <input
           ref={inputRef}
           type="text"
           id="fname"
           name="fname"
           placeholder=' Type your task'
-          style={{ width: "100%", height: "40px", fontSize: "25px", outline: "none", padding: "18px", border:"none" }}
+          style={{ width: "100%", height: "40px", fontSize: "22px", outline: "none" , border:"none" }}
           onChange={inputHandler}
           onKeyDown={(e:type_for_todo_row) => key_down_handler(e)}
           value={inputValue}

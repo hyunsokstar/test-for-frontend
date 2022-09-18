@@ -73,14 +73,14 @@ function TodosContainer({ }: Props) {
     }
 
 
-    const add_todo = async (e: any, todoData:string) => {
+    const add_todo = async (e: any, todoData: string) => {
         const randomId = Math.random();
         console.log("typeof randomId : ", typeof randomId);
         // console.log("e: ", e.target.value);
         // console.log("todoData : ", todoData);
-        
+
         let todo: string;
-        if(todoData=== ""){
+        if (todoData === "") {
             todo = e.target.value;
         } else {
             todo = todoData
@@ -162,11 +162,14 @@ function TodosContainer({ }: Props) {
             border: "0px solid blue",
             width: "100%",
             margin: "auto",
+            // border:"10px solid pink"
             // gap: '5px'
         }}>
 
-            <div style={{ padding: "0px", marginBottom: "10px" }}>
+            <div style={{ padding: "0px", marginBottom: "10px" , borderBottom:"1px solid #e4dedeff"}}>
                 <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} dayIndex={0} utc_datetime={0} />
+            </div>
+            <div>
                 <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
             </div>
 
