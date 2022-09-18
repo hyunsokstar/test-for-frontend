@@ -11,7 +11,7 @@ import api from "../../utils/api"
 type Props = {}
 
 interface row_type_for_delete_row {
-    id: string;
+    id: string | number;
     todo: string;
     createdAt: string;
 }
