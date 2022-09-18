@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core";
 
 
 type Props = {
-  add_todo: any,
+  add_todo: () => void,
   inputValue: any,
   setInputValue: any
 }
