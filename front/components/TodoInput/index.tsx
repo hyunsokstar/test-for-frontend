@@ -29,11 +29,7 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
   const classes = useStyles();
 
   useEffect(() => {
-    setTimeout(() => {
-      
       inputRef.current.focus();
-    }, 1000);
-
   }, [])
 
   const inputHandler = (e: any) => {
@@ -45,11 +41,11 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
     add_todo(e)
   }
 
-  const add_todo2 = () => {
+  const add_todo2 = async () => {
     const e = { key: "icon" }
     const my_value = inputRef.current.value;
     inputRef.current.value = ""
-    add_todo(e, my_value);
+    await add_todo(e, my_value);
     inputRef.current.focus();
   }
 
