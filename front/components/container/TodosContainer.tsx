@@ -11,7 +11,7 @@ import api from "../../utils/api"
 type Props = {}
 
 interface row_type_for_delete_row {
-    id: number;
+    id: string;
     todo: string;
     createdAt: string;
 }
@@ -31,7 +31,7 @@ const sapme_todos = [
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function TodosContainer({ }: Props) {
     const [data_for_todos, set_data_for_todos] = useState<any>(sapme_todos);
-    const [checked_list, set_checked_list] = useState<Array<number>>([]);
+    const [checked_list, set_checked_list] = useState<Array<string>>([]);
     const [inputValue, setInputValue] = useState("")
 
     useEffect(() => {
@@ -98,7 +98,7 @@ function TodosContainer({ }: Props) {
     const checkHandler = (e: React.FormEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
         const checked = target.checked;
-        const checked_id = Number(target.id);
+        const checked_id = target.id;
 
         if (checked) {
             set_checked_list(([...checked_list, checked_id]))
