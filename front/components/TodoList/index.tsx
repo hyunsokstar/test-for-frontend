@@ -24,8 +24,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function TodoList({ data_for_todos, checkHandler, checked_list }: Props) {
 
-    console.log("checked_list : ", checked_list);
-    
+    // console.log("checked_list : ", checked_list);
 
     const todorow = (row: type_for_todo_row) => {
         // console.log("row : ",row);

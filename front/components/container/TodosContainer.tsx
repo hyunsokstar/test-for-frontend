@@ -113,9 +113,8 @@ function TodosContainer({ }: Props) {
         const checked = target.checked;
         const checked_id = target.id;
 
-        console.log("        checked_list : ", checked_list);
-
-        console.log("checked_id : ", checked_id);
+        // console.log("        checked_list : ", checked_list);
+        // console.log("checked_id : ", checked_id);
 
 
         if (checked) {
@@ -148,7 +147,7 @@ function TodosContainer({ }: Props) {
 
         })
 
-        console.log("new_data_for_todos_for_delete : ", new_data_for_todos_for_delete);
+        // console.log("new_data_for_todos_for_delete : ", new_data_for_todos_for_delete);
 
 
         set_data_for_todos(new_data_for_todos_for_delete);
