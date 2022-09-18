@@ -7,6 +7,7 @@ import BottomContainer from '../Bottom'
 import axios from "axios";
 import api from "../../utils/api"
 import todo_type_for_list from "../TodoList"
+import { type_for_todo_row } from "../../common/type_for_todos"
 
 type Props = {}
 
@@ -17,7 +18,7 @@ type Props = {}
 // }
 
 interface todo_type_from_server {
-    _id: string;
+    _id: string | number;
     task_title: string;
     createdAt: string;
 }
@@ -32,7 +33,7 @@ const sample_todos = [
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function TodosContainer({ }: Props) {
     const [data_for_todos, set_data_for_todos] = useState<any>(sample_todos);
-    const [checked_list, set_checked_list] = useState<Array<string>>([]);
+    const [checked_list, set_checked_list] = useState<Array<string | number>>([]);
     const [inputValue, setInputValue] = useState("")
 
     useEffect(() => {
@@ -48,10 +49,10 @@ function TodosContainer({ }: Props) {
             );
             // const rows_data = response.data.data.rows_for_grid
             console.log("response : ", response);
-            
+
             if (response.data.success) {
                 const todo_data = response.data.data;
-                
+
                 const new_todos = todo_data.map((row: todo_type_from_server) => {
                     return {
                         id: row._id,
@@ -72,11 +73,19 @@ function TodosContainer({ }: Props) {
     }
 
 
-    const add_todo = async (e: any, todoData = "") => {
-        const randomId = String(Math.random());
-        console.log("e.key : ", e.key);
+    const add_todo = async (e: any, todoData:string) => {
+        const randomId = Math.random();
+        console.log("typeof randomId : ", typeof randomId);
+        // console.log("e: ", e.target.value);
+        // console.log("todoData : ", todoData);
+        
+        let todo: string;
+        if(todoData=== ""){
+            todo = e.target.value;
+        } else {
+            todo = todoData
+        }
 
-        let todo = todoData;
 
         const time = await new Date();
         const create_at_for_row = await time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
@@ -86,12 +95,12 @@ function TodosContainer({ }: Props) {
             if (todo === "") {
                 alert("할일을 입력해 주세요")
             } else {
-                set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo, createdAt: create_at_for_row }]);
+                set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
                 setInputValue("")
             }
         } else if (e.key === "icon") {
-            if (todoData !== "") {
-                set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo, createdAt: create_at_for_row }]);
+            if (todo !== "") {
+                set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
                 setInputValue("")
             } else {
                 alert("할일을 입력해 주세요 !")
@@ -104,11 +113,16 @@ function TodosContainer({ }: Props) {
         const checked = target.checked;
         const checked_id = target.id;
 
+        console.log("        checked_list : ", checked_list);
+
+        console.log("checked_id : ", checked_id);
+
+
         if (checked) {
             set_checked_list(([...checked_list, checked_id]))
         } else {
             console.log("체크 취소 => 체크 ");
-            const new_checked_list = checked_list.filter((chid: any) => {
+            const new_checked_list = checked_list.filter((chid: string | number) => {
                 if (chid !== checked_id) {
                     return checked_id;
                 }
@@ -125,13 +139,18 @@ function TodosContainer({ }: Props) {
         } else {
             set_data_for_todos([]);
         }
+        console.log("checked_list : ", checked_list);
 
-        const new_data_for_todos_for_delete = data_for_todos.filter((row: todo_type_for_list) => {
+        const new_data_for_todos_for_delete = data_for_todos.filter((row: type_for_todo_row) => {
             if (!checked_list.includes(row.id)) {
                 return row;
             }
 
         })
+
+        console.log("new_data_for_todos_for_delete : ", new_data_for_todos_for_delete);
+
+
         set_data_for_todos(new_data_for_todos_for_delete);
 
     }
@@ -146,7 +165,7 @@ function TodosContainer({ }: Props) {
             // gap: '5px'
         }}>
 
-            <div style={{ padding: "0px" , marginBottom:"10px"}}>
+            <div style={{ padding: "0px", marginBottom: "10px" }}>
                 <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} dayIndex={0} utc_datetime={0} />
                 <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
             </div>
@@ -155,7 +174,7 @@ function TodosContainer({ }: Props) {
                 <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list} />
             </div>
 
-            <div style={{ display: "flex", justifyContent: "center", marginTop:"90px" }}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "90px" }}>
                 <BottomContainer />
             </div>
 

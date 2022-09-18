@@ -5,10 +5,10 @@ import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useRef } from 'react';
 import { makeStyles } from "@material-ui/core";
-
+import { type_for_todo_row } from "../../common/type_for_todos"
 
 type Props = {
-  add_todo: () => void,
+  add_todo: (e:type_for_todo_row) => void,
   inputValue: any,
   setInputValue: any
 }
@@ -38,7 +38,7 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
   }
 
 
-  const key_down_handler = (e: any) => {
+  const key_down_handler = (e: type_for_todo_row) => {
     add_todo(e)
   }
 
@@ -65,7 +65,7 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
           placeholder=' Type your task'
           style={{ width: "100%", height: "40px", fontSize: "25px", outline: "none", padding: "18px", border:"none" }}
           onChange={inputHandler}
-          onKeyDown={(e) => key_down_handler(e)}
+          onKeyDown={(e:type_for_todo_row) => key_down_handler(e)}
           value={inputValue}
         />
 

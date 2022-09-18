@@ -20,7 +20,7 @@ const HeaderContents = ({ dayIndex, utc_datetime, task_of_number, clearButtonHan
     const MonthNum = localDate.getMonth();
 
     return (
-        <div style={{padding: "0px 10px"}}>
+        <div>
             <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", border: "1px solid #f0eaeaf", "width": "100%", "fontFamily": "Trirong", "fontSize": "40px", "color": "#7190f0" }}>
                 {/* <div style={{ "color": "#d8dae1", "fontSize": "25px", marginRight: "18px" }}> */}
                 <div>
@@ -51,34 +51,9 @@ const HeaderContents = ({ dayIndex, utc_datetime, task_of_number, clearButtonHan
                         Clear List
                     </Button>
                 </div>
-                {/* </div> */}
-                {/* <div style={{ marginRight: "20px" }}>
-                    &nbsp;&nbsp; {task_of_number} Tasks <br />
-                    <Button
-                        variant="contained"
-                        // onClick={clearButtonHandler}
-                        style={{ backgroundColor: "blue", color: "white" }}
-                    >
-                        저장
-                    </Button>
-
-                    <Button
-                        variant="contained"
-                        onClick={clearButtonHandler}
-                        style={{ backgroundColor: "#FC6E6F", color: "white" }}
-                    >
-                        Clear List
-                    </Button>
-                </div> */}
             </div>
             <div>
 
-                <div style={{ "color": "#d8dae1", "fontSize": "25px" }}>
-                    <div style={{ marginTop: "30px", marginRight: "10px" }}>
-
-                    </div>
-
-                </div>
             </div>
         </div >
 

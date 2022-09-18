@@ -40,13 +40,13 @@ function TodoHeader2({ task_of_number, clearButtonHandler }: Props) {
 
     return (
         <>
-            <div style={{ border: "0px solid #F0F4F8", backgroundColor: "#FBFBFF", marginBottom:"10px" }}>
+            <div style={{ border: "0px solid #F0F4F8", backgroundColor: "#FBFBFF", padding: "0 10px" }}>
                 {/* <MonthWeekDateNum */}
                 <HeaderContents
-                dayIndex={dayOfWeekIndex}
+                    dayIndex={dayOfWeekIndex}
                     utc_datetime={utc_datetime}
                     task_of_number={task_of_number}
-                    clearButtonHandler= {clearButtonHandler}
+                    clearButtonHandler={clearButtonHandler}
                 />
 
             </div>

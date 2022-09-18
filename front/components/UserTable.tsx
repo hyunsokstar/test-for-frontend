@@ -164,7 +164,7 @@ function UserTable() {
 
     try {
       const rows_for_delete = basicRow.filter((row) => {
-        console.log("row : ", row);
+        // console.log("row : ", row);
 
         if (selectList.has(row.id)) {
           return row._id

@@ -6,6 +6,7 @@ import BottomContainer2 from '../Bottom2'
 // axios 작업
 import axios from "axios";
 import api from "../../utils/api"
+import { type_for_todo_row } from "../../common/type_for_todos"
 
 
 type Props = {}
@@ -15,13 +16,14 @@ interface row_type_for_delete_row {
     todo: string;
     createdAt: string;
 }
+
 interface todo_type_from_server {
     _id: string;
     task_title: string;
     createdAt: string;
 }
 
-const sample_todos = [
+const sample_todos: Array<type_for_todo_row> = [
     { id: 1, todo: "할일1", createdAt: "3:44 pm" },
     { id: 2, todo: "할일2", createdAt: "3:45 pm" },
     { id: 3, todo: "할일3", createdAt: "4:51 pm" },
@@ -46,11 +48,11 @@ function TodosContainer({ }: Props) {
                 { withCredentials: true }
             );
             // console.log("response : ", response);
-            
+
             if (response.data.success) {
                 const todo_data = response.data.data;
-                
-                const new_todos = todo_data.map((row: todo_type_from_server) => {
+
+                const new_todos = todo_data.map((row: type_for_todo_row) => {
                     return {
                         id: row._id,
                         todo: row.task_title,
@@ -138,22 +140,24 @@ function TodosContainer({ }: Props) {
         <div style={{
             display: "flex",
             flexDirection: "column",
-            border: "0px solid blue",
+            borderBottom: "1px solid #eee9e9f",
             width: "100%",
             margin: "auto",
+            marginTop: "5px"
             // gap: '5px'
         }}>
 
-            <div style={{ padding: "0px" , marginBottom:"10px"}}>
+            <div>
                 <TodoHeader2 task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} />
+            </div>
+            <div style={{ border: "0px solid green", padding: "20px 10px", margin: "0px 0px" }}>
                 <TodoInput2 add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
             </div>
-
             <div>
                 <TodoList2 data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list} />
             </div>
 
-            <div style={{ display: "flex", justifyContent: "center", marginTop:"90px" }}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "90px" }}>
                 <BottomContainer2 />
             </div>
 
