@@ -11,6 +11,8 @@ function front_test({ }: Props) {
         <div style={{
           backgroundColor: "white",
           display: "flex",
+          justifyContent:"center",
+          alignItems:"center",
           height: "100vh",
           width: "800px",
         }}>
