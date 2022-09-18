@@ -72,7 +72,7 @@ function TodosContainer({ }: Props) {
 
 
     const add_todo = async (e: any, todoData = "") => {
-        const randomId = Math.random();
+        const randomId = String(Math.random());
         console.log("e.key : ", e.key);
 
         let todo = todoData;
