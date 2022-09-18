@@ -153,7 +153,7 @@ function TodosContainer({ }: Props) {
                 <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list} />
             </div>
 
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop:"90px" }}>
                 <BottomContainer />
             </div>
 
