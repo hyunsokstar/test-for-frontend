@@ -29,7 +29,10 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
   const classes = useStyles();
 
   useEffect(() => {
-    inputRef.current.focus();
+    setTimeout(() => {
+      
+      inputRef.current.focus();
+    }, 1000);
 
   }, [])
 
@@ -56,11 +59,12 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
         <AddIcon style={{ opacity: "0.6" }} onClick={add_todo2} className={classes.iconForInputEnter}/>
         <input
           ref={inputRef}
+          size = {64}
           type="text"
           id="fname"
           name="fname"
           placeholder=' Type your task'
-          style={{ width: "100%", height: "40px", fontSize: "22px", outline: "none" , border:"none" }}
+          style={{ height: "40px", fontSize: "22px", outline: "none" , border:"none" }}
           onChange={inputHandler}
           onKeyDown={(e:type_for_todo_row) => key_down_handler(e)}
           value={inputValue}
