@@ -49,17 +49,20 @@ function TodosContainer({ }: Props) {
             // const rows_data = response.data.data.rows_for_grid
             console.log("response : ", response);
 
+            
             if (response.data.success) {
                 const todo_data = response.data.data;
+                
                 const new_todos = todo_data.map((row: todo_type_from_server) => {
                     return {
                         id: row._id,
                         todo: row.task_title,
-                        createdAt: row.createdAt
+                        createdAt: new Date(row.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase()
                     }
                 })
                 set_data_for_todos(new_todos);
             }
+
             // setPageInfo({ page: response.data.data.current_page, total: response.data.data.total_page })   
         } catch (error) {
             console.log("error : ", error);
