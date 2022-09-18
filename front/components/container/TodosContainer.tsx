@@ -4,11 +4,21 @@ import TodoInput from '../TodoInput'
 import TodoList from '../TodoList'
 import BottomContainer from '../Bottom'
 
+// axios 작업
+import axios from "axios";
+import api from "../../utils/api"
+
+
 type Props = {}
 
 interface row_type_for_delete_row {
     id: number;
     todo: string;
+    createdAt: string;
+}
+interface todo_type_from_server {
+    _id: string;
+    task_title: string;
     createdAt: string;
 }
 
@@ -18,15 +28,48 @@ const sapme_todos = [
     { id: 3, todo: "할일3", createdAt: "4:51 pm" },
 ]
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function TodosContainer({ }: Props) {
     const [data_for_todos, set_data_for_todos] = useState<any>(sapme_todos);
     const [checked_list, set_checked_list] = useState<Array<number>>([]);
     const [inputValue, setInputValue] = useState("")
 
+    useEffect(() => {
+        get_data_for_todos();
+    }, [])
+
+    const get_data_for_todos = async () => {
+        // console.log("hi");
+        try {
+            const response = await axios.get(
+                `${api.milestone}/`,
+                { withCredentials: true }
+            );
+            // const rows_data = response.data.data.rows_for_grid
+            console.log("response : ", response);
+
+            if (response.data.success) {
+                const todo_data = response.data.data;
+                const new_todos = todo_data.map((row: todo_type_from_server) => {
+                    return {
+                        id: row._id,
+                        todo: row.task_title,
+                        createdAt: row.createdAt
+                    }
+                })
+                set_data_for_todos(new_todos);
+            }
+            // setPageInfo({ page: response.data.data.current_page, total: response.data.data.total_page })   
+        } catch (error) {
+            console.log("error : ", error);
+        }
+    }
+
+
     const add_todo = async (e: any, todoData = "") => {
         const randomId = Math.random();
         console.log("e.key : ", e.key);
-
 
         let todo = todoData;
 
@@ -41,7 +84,6 @@ function TodosContainer({ }: Props) {
                 set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo, createdAt: create_at_for_row }]);
                 setInputValue("")
             }
-
         } else if (e.key === "icon") {
             if (todoData !== "") {
                 set_data_for_todos((prev: any) => [...prev, { id: randomId, todo: todo, createdAt: create_at_for_row }]);
@@ -50,7 +92,6 @@ function TodosContainer({ }: Props) {
                 alert("할일을 입력해 주세요 !")
             }
         }
-
     }
 
     const checkHandler = (e: React.FormEvent<HTMLInputElement>) => {
