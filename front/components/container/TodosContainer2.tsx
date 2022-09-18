@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import TodoHeader from '../TodoHeader'
-import TodoInput from '../TodoInput'
-import TodoList from '../TodoList'
-import BottomContainer from '../Bottom'
+import TodoHeader2 from '../TodoHeader2'
+import TodoInput2 from '../TodoInput2'
+import TodoList2 from '../TodoList2'
+import BottomContainer2 from '../Bottom2'
 // axios 작업
 import axios from "axios";
 import api from "../../utils/api"
@@ -146,16 +146,16 @@ function TodosContainer({ }: Props) {
         }}>
 
             <div style={{ padding: "0px" , marginBottom:"10px"}}>
-                <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} />
-                <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
+                <TodoHeader2 task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} />
+                <TodoInput2 add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
             </div>
 
             <div>
-                <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list} />
+                <TodoList2 data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list} />
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", marginTop:"90px" }}>
-                <BottomContainer />
+                <BottomContainer2 />
             </div>
 
         </div>

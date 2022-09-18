@@ -12,7 +12,7 @@ type Props = {
 }
 
 
-function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
+function TodoHeader2({ task_of_number, clearButtonHandler }: Props) {
     const [dayOfWeekIndex, setDaysOfTheWeekIndex] = useState<number>(0);
     const [utc_datetime, set_utc_datatime] = useState<number>(0);
 
@@ -53,4 +53,4 @@ function TodoHeader({ task_of_number, clearButtonHandler }: Props) {
     )
 }
 
-export default TodoHeader
+export default TodoHeader2
