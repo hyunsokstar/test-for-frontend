@@ -3,8 +3,8 @@ import Checkbox from '@mui/material/Checkbox';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
-interface todo_type_for_list {
-    id: number;
+export interface todo_type_for_list {
+    id: string | number;
     todo: string;
     createdAt: string
 }

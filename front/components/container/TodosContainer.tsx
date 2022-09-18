@@ -6,15 +6,16 @@ import BottomContainer from '../Bottom'
 // axios 작업
 import axios from "axios";
 import api from "../../utils/api"
-
+import todo_type_for_list from "../TodoList"
 
 type Props = {}
 
-interface row_type_for_delete_row {
-    id: string | number;
-    todo: string;
-    createdAt: string;
-}
+// interface row_type_for_delete_row {
+//     id: string | number;
+//     todo: string;
+//     createdAt: string;
+// }
+
 interface todo_type_from_server {
     _id: string;
     task_title: string;
@@ -125,7 +126,7 @@ function TodosContainer({ }: Props) {
             set_data_for_todos([]);
         }
 
-        const new_data_for_todos_for_delete = data_for_todos.filter((row: row_type_for_delete_row) => {
+        const new_data_for_todos_for_delete = data_for_todos.filter((row: todo_type_for_list) => {
             if (!checked_list.includes(row.id)) {
                 return row;
             }
