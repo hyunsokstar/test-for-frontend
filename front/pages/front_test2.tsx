@@ -11,7 +11,7 @@ function front_test({ }: Props) {
         <div style={{
           backgroundColor: "white",
           display: "flex",
-          height: "50vh",
+          height: "100vh",
           width: "800px",
         }}>
           <TodosContainer2 />
