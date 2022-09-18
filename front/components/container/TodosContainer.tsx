@@ -3,7 +3,6 @@ import TodoHeader from '../TodoHeader'
 import TodoInput from '../TodoInput'
 import TodoList from '../TodoList'
 import BottomContainer from '../Bottom'
-
 // axios 작업
 import axios from "axios";
 import api from "../../utils/api"
@@ -48,7 +47,6 @@ function TodosContainer({ }: Props) {
             );
             // const rows_data = response.data.data.rows_for_grid
             console.log("response : ", response);
-
             
             if (response.data.success) {
                 const todo_data = response.data.data;
