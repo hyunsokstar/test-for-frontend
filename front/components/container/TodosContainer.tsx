@@ -21,7 +21,7 @@ interface todo_type_from_server {
     createdAt: string;
 }
 
-const sapme_todos = [
+const sample_todos = [
     { id: 1, todo: "할일1", createdAt: "3:44 pm" },
     { id: 2, todo: "할일2", createdAt: "3:45 pm" },
     { id: 3, todo: "할일3", createdAt: "4:51 pm" },
@@ -30,7 +30,7 @@ const sapme_todos = [
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function TodosContainer({ }: Props) {
-    const [data_for_todos, set_data_for_todos] = useState<any>(sapme_todos);
+    const [data_for_todos, set_data_for_todos] = useState<any>(sample_todos);
     const [checked_list, set_checked_list] = useState<Array<string>>([]);
     const [inputValue, setInputValue] = useState("")
 
@@ -59,7 +59,10 @@ function TodosContainer({ }: Props) {
                     }
                 })
                 set_data_for_todos(new_todos);
+            } else {
+                set_data_for_todos(sample_todos)
             }
+
 
             // setPageInfo({ page: response.data.data.current_page, total: response.data.data.total_page })   
         } catch (error) {
