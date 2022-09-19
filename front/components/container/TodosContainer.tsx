@@ -39,6 +39,7 @@ function TodosContainer({ }: Props) {
         get_data_for_todos();
     }, [])
 
+    
     const get_data_for_todos = async () => {
         // console.log("hi");
         try {
@@ -128,6 +129,19 @@ function TodosContainer({ }: Props) {
         }
     }
 
+    const delete_request_to_server = async (delete_ids: Array<string>) => { 
+
+        const response = await axios.post(
+            `${api.milestone}/delete_todos_for_rows_for_task_management_table`,
+            { ids_for_delete:  delete_ids},
+            { withCredentials: true }
+          );
+
+        console.log("delete 요청 결과 : ", response);
+        
+
+    }
+
     const checkHandler = (e: React.FormEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
         const checked = target.checked;
@@ -160,13 +174,17 @@ function TodosContainer({ }: Props) {
         }
         console.log("checked_list : ", checked_list);
 
+        // 삭제 요청 날리기 by ids
+        delete_request_to_server(checked_list);
+
+        
         const new_data_for_todos_for_delete = data_for_todos.filter((row: type_for_todo_row) => {
             if (!checked_list.includes(row.id)) {
                 return row;
             }
-
         })
 
+        // requeest_delete_api(checked_list);
         // console.log("new_data_for_todos_for_delete : ", new_data_for_todos_for_delete);
 
 

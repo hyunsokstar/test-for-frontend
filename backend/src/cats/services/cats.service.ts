@@ -102,7 +102,6 @@ export class CatsService {
 
       if (mongoose.isValidObjectId(user.id)) {
         isCatExist = await this.catsRepository.existsById(user.id);
-
       } else {
         isCatExist = false
       }

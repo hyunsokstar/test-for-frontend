@@ -99,7 +99,6 @@ export class CatsController {
     return "유저스 테이블에 row 정보 저장 성공"
   }
 
-
   
   @Post("deleteMembers")
   async deleteMultiUsers(@Body() data) {

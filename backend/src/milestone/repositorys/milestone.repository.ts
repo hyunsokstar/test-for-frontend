@@ -7,6 +7,19 @@ import { task_management_table } from '../schemas/task_management_table.schema';
 
 @Injectable()
 export class MilestonsRepository {
+    async delete_todos_for_rows_for_task_management_table(ids_for_delete_todos: any) {
+        // throw new Error('Method not implemented.');
+        console.log("ids_for_delete_todos : ", ids_for_delete_todos);
+        const result = await this.task_management_table_model.deleteMany(
+            {
+                _id: {
+                    $in: ids_for_delete_todos
+                }
+            },
+        );
+        return result;
+
+    }
     async investigate_existence_by_id_for_save_rows_for_task_management_table(id: any) {
 
         const result = await this.task_management_table_model.exists({ _id: id });
