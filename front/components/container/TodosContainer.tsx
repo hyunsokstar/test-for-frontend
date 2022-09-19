@@ -39,7 +39,7 @@ function TodosContainer({ }: Props) {
         get_data_for_todos();
     }, [])
 
-    
+
     const get_data_for_todos = async () => {
         // console.log("hi");
         try {
@@ -72,25 +72,26 @@ function TodosContainer({ }: Props) {
         }
     }
 
-    const save_request_to_server = async (todo:string) => {
-
+    const save_request_to_server = async (todo: string) => {
         const data_array = []
-        data_array.push({task_title:todo, task_status:"uncomplete"});
-
+        data_array.push({ task_title: todo, task_status: "uncomplete" });
         console.log("data_array : ", data_array);
-        
-
         const response = await axios.post(`${api.milestone}/save_rows_for_task_management_table`, data_array, {
             withCredentials: true,
         });
+        console.log("response.data.data._id : ", response.data.data._id);
+        set_data_for_todos((prev: Array<type_for_todo_row>) =>
+            [...prev, { id: response.data.data._id, todo: response.data.data.task_title, createdAt: new Date(response.data.data.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() }]);
 
-        console.log("response.data : ", response.data);
 
     }
 
     const add_todo = async (e: any, todoData: string) => {
+        console.log("e: ", e);
+        // e.preventDefault();
+        
 
-        // alert("add_todo 실행")
+        // alert("add_todo 실행 !!!!!!!!!!")
 
         const randomId = Math.random();
         console.log("typeof randomId : ", typeof randomId);
@@ -105,40 +106,42 @@ function TodosContainer({ }: Props) {
         }
 
 
-        const time = await new Date();
-        const create_at_for_row = await time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
+        // const time = await new Date();
+        // const create_at_for_row = time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
 
-        if (e.key === 'Enter') {
+        if (e.key == 'Enter') {
             todo = e.target.value;
             if (todo === "") {
                 alert("할일을 입력해 주세요")
             } else {
-
-                save_request_to_server(todo);
-                set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
-                setInputValue("")
-            }
-        } else if (e.key === "icon") {
-            if (todo !== "") {
-                set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
+                alert("add_todo 실행 !!!!!!!!!!")
                 save_request_to_server(todo);
                 setInputValue("")
-            } else {
-                alert("할일을 입력해 주세요 !")
             }
-        }
+        }  
+        // else if (e.key === "icon") {
+        //     // console.log("e: ", e);
+            
+        //     if (todo !== "") {
+        //         // set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
+        //         save_request_to_server(todo);
+        //         setInputValue("")
+        //     } else {
+        //         alert("할일을 입력해 주세요 !")
+        //     }
+        // }
     }
 
-    const delete_request_to_server = async (delete_ids: Array<string>) => { 
+    const delete_request_to_server = async (delete_ids: Array<string>) => {
 
         const response = await axios.post(
             `${api.milestone}/delete_todos_for_rows_for_task_management_table`,
-            { ids_for_delete:  delete_ids},
+            { ids_for_delete: delete_ids },
             { withCredentials: true }
-          );
+        );
 
         console.log("delete 요청 결과 : ", response);
-        
+
 
     }
 
@@ -177,7 +180,7 @@ function TodosContainer({ }: Props) {
         // 삭제 요청 날리기 by ids
         delete_request_to_server(checked_list);
 
-        
+
         const new_data_for_todos_for_delete = data_for_todos.filter((row: type_for_todo_row) => {
             if (!checked_list.includes(row.id)) {
                 return row;

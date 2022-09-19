@@ -38,23 +38,19 @@ export class MilestoneService {
             console.log("row 존재 so 업데이트");
         } else {
             console.log("row 비존재 so 저장");
-            await data.forEach(async (row) => {
-                console.log("row : ", row);
-                result_for_save = await this.milestoneRepository.save_rows_for_task_management_table({
-                    task_title: row.task_title,
-                    task_status: row.task_status
-                });
-                console.log("result_for_save 22 : ", result_for_save);
-                save_count = save_count + 1
+            result_for_save = await this.milestoneRepository.save_rows_for_task_management_table({
+                task_title: data[0].task_title,
+                task_status: data[0].task_status
             });
         }
+        console.log("result_for_save !!!!!!!! ", result_for_save);
 
-        if(result_for_save !== undefined){
+        if (result_for_save !== undefined) {
             console.log("result_for_save 1122 : ", result_for_save);
         } else {
             console.log("result is empty");
         }
-        
+
         return result_for_save;
     }
 

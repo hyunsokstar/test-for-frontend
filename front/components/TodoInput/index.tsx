@@ -62,7 +62,7 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
           placeholder=' Type your task'
           style={{ height: "40px", fontSize: "22px", outline: "none" , border:"none" }}
           onChange={inputHandler}
-          onKeyDown={(e:type_for_todo_row) => key_down_handler(e)}
+          onKeyUpCapture={(e:type_for_todo_row) => key_down_handler(e)}
           value={inputValue}
         />
 
