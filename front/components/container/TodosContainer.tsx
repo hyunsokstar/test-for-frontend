@@ -132,11 +132,11 @@ function TodosContainer({ }: Props) {
         // }
     }
 
-    const delete_request_to_server = async (delete_ids: Array<string>) => {
+    const delete_request_to_server = async (delete_ids: Array<string | number>) => {
 
         const response = await axios.post(
             `${api.milestone}/delete_todos_for_rows_for_task_management_table`,
-            { ids_for_delete: delete_ids },
+            delete_ids ,
             { withCredentials: true }
         );
 

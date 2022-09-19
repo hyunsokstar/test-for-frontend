@@ -10,13 +10,8 @@ export class MilestoneService {
     ) { }
 
     async delete_todos_for_rows_for_task_management_table(ids_for_delete_todos: any) {
-
-        // const ids_for_delete = data.ids_for_delete;
         const result = await this.milestoneRepository.delete_todos_for_rows_for_task_management_table(ids_for_delete_todos);
-
-        console.log('result : ', result);
-
-        // throw new Error('Method not implemented.');
+        return result
     }
 
     async save_rows_for_task_management_table(data: any) {

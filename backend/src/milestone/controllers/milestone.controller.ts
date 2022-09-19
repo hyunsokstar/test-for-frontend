@@ -36,9 +36,9 @@ export class MilestoneController {
     @Post("delete_todos_for_rows_for_task_management_table")
     async delete_todos_for_rows_for_task_management_table(@Body() data) {
         const ids_for_delete_todos = data
-        console.log("ids_for_delete_users : ", ids_for_delete_todos);
+        // console.log("ids_for_delete_todos : ", ids_for_delete_todos);
           return this.milestoneService.delete_todos_for_rows_for_task_management_table(ids_for_delete_todos);
-        return "삭제 성공 !!"
+        // return "삭제 성공 !!"
     }
 
 }

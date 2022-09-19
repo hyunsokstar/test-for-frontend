@@ -1,15 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { task_management_table } from '../schemas/task_management_table.schema';
 
 
 @Injectable()
 export class MilestonsRepository {
     async delete_todos_for_rows_for_task_management_table(ids_for_delete_todos: any) {
-        // throw new Error('Method not implemented.');
         console.log("ids_for_delete_todos : ", ids_for_delete_todos);
+
+        ids_for_delete_todos.map((el)=> {
+            if( !mongoose.Types.ObjectId.isValid(el) ) {
+                console.log("유효하지 않습니다 !");
+            } else {
+                console.log("유효 합니다 ");
+                
+            }
+        })
+
+
         const result = await this.task_management_table_model.deleteMany(
             {
                 _id: {
