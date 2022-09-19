@@ -37,7 +37,7 @@ function TodoList({ data_for_todos, checkHandler, checked_list }: Props) {
                 <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} style={{ color: "#FC6E6F" }} />
                 <ListItemText id={row.id} primary={row.todo} style={{ textDecoration: checked_list.includes(row.id) && 'line-through', flex: 3 }} />
                 <ListItemText style={{ flex: 1, textAlign: "middle" }}>
-                    <SwitchButton checked = {row.task_status}/>
+                    <SwitchButton task_statuss={row.task_status} />
                 </ListItemText>
                 <div edge="end" style={{ float: "right", marginRight: "10px" }}> {row.createdAt} </div>
             </div>

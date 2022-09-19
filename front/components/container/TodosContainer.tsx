@@ -106,8 +106,6 @@ function TodosContainer({ }: Props) {
         } else {
             todo = todoData
         }
-
-
         // const time = await new Date();
         // const create_at_for_row = time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
 
