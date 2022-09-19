@@ -19,6 +19,7 @@ type Props = {}
 interface todo_type_from_server {
     _id: string | number;
     task_title: string;
+    task_status: string;
     createdAt: string;
 }
 
@@ -48,7 +49,7 @@ function TodosContainer({ }: Props) {
                 { withCredentials: true }
             );
             // const rows_data = response.data.data.rows_for_grid
-            // console.log("response : ", response);
+            console.log("response : ", response.data.data);
 
             if (response.data.success) {
                 const todo_data = response.data.data;
@@ -57,6 +58,7 @@ function TodosContainer({ }: Props) {
                     return {
                         id: row._id,
                         todo: row.task_title,
+                        task_status:row.task_status,
                         createdAt: new Date(row.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase()
                     }
                 })
@@ -74,7 +76,7 @@ function TodosContainer({ }: Props) {
 
     const save_request_to_server = async (todo: string) => {
         const data_array = []
-        data_array.push({ task_title: todo, task_status: "uncomplete" });
+        data_array.push({ task_title: todo, task_status: false });
         console.log("data_array : ", data_array);
         const response = await axios.post(`${api.milestone}/save_rows_for_task_management_table`, data_array, {
             withCredentials: true,
@@ -114,7 +116,7 @@ function TodosContainer({ }: Props) {
             if (todo === "") {
                 alert("할일을 입력해 주세요")
             } else {
-                alert("add_todo 실행 !!!!!!!!!!")
+                // alert("add_todo 실행 !!!!!!!!!!")
                 save_request_to_server(todo);
                 setInputValue("")
             }

@@ -19,9 +19,10 @@ export class task_management_table extends Document {
   @Prop({
     required: true,
   })
-  @IsString()
-  task_status: string;
 
+
+  @Prop()
+  task_status: boolean;
 
   readonly readOnlyData: {
     task_title: string;
