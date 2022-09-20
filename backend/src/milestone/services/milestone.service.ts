@@ -15,12 +15,8 @@ export class MilestoneService {
     ) { }
 
     async update_task_status_by_id(_id: any, task_status: any) {
-        // throw new Error('Method not implemented.');
         console.log("_id at service: ", _id);
-        // console.log("task_status at service: ", task_status);
-        const result = await this.milestoneRepository.update_task_status_by_id(_id, task_status);
-
-
+        return await this.milestoneRepository.update_task_status_by_id(_id, task_status);
     }
 
     async delete_todos_for_rows_for_task_management_table(ids_for_delete_todos: any) {

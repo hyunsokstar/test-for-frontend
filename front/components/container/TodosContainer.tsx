@@ -60,7 +60,6 @@ function TodosContainer({ }: Props) {
                         task_status: row.task_status,
                         createdAt: new Date(row.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
                         completed_at  : row.completed_at ? new Date(row.completed_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() : ""
-
                     }
                 })
                 set_data_for_todos(new_todos);
@@ -221,7 +220,7 @@ function TodosContainer({ }: Props) {
             </div>
 
             <div>
-                <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list}  delete_handler= {delete_handler} />
+                <TodoList data_for_todos={data_for_todos} set_data_for_todos = {set_data_for_todos} checkHandler={checkHandler} checked_list={checked_list}  delete_handler= {delete_handler} />
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", marginTop: "90px" }}>
