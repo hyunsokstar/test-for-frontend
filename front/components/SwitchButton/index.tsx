@@ -39,8 +39,10 @@ function SwitchButton({ task_status, rowId, data_for_todos , set_data_for_todos,
                             id: response.data.data._id,
                             todo: response.data.data.task_title,
                             task_status: !response.data.data.task_status,
+                            started_at : row.started_at,
                             createdAt: new Date(response.data.data.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
-                            completed_at  : new Date(response.data.data.completed_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),                            
+                            completed_at  : new Date(response.data.data.completed_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
+                            elapsed_time : response.data.data.elapsed_time                            
                             // completed_color: true,
                             // switch_button_checked : !checked
                         }

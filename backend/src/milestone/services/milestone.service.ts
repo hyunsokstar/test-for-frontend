@@ -45,7 +45,8 @@ export class MilestoneService {
             console.log("row 비존재 so 저장");
             result_for_save = await this.milestoneRepository.save_rows_for_task_management_table({
                 task_title: data[0].task_title,
-                task_status: data[0].task_status
+                task_status: data[0].task_status,
+                started_at: new Date(Date.now())
             });
         }
         console.log("result_for_save !!!!!!!! ", result_for_save);

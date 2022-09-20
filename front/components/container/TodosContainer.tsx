@@ -17,6 +17,8 @@ type Props = {}
 // }
 
 interface todo_type_from_server {
+    elapsed_time: any
+    started_at: string | number | Date
     completed_at: string | number | Date
     _id: string | number;
     task_title: string;
@@ -58,8 +60,9 @@ function TodosContainer({ }: Props) {
                         id: row._id,
                         todo: row.task_title,
                         task_status: row.task_status,
-                        createdAt: new Date(row.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
-                        completed_at  : row.completed_at ? new Date(row.completed_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() : ""
+                        started_at: new Date(row.started_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
+                        completed_at  : row.completed_at ? new Date(row.completed_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() : "",
+                        elapsed_time: row.elapsed_time ? row.elapsed_time : ""
                     }
                 })
                 set_data_for_todos(new_todos);

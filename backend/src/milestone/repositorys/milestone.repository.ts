@@ -39,10 +39,28 @@ export class MilestonsRepository {
     async update_task_status_by_id(_id: any, task_status: any) {
         // throw new Error('Method not implemented.');
 
+        // 1122
+
+        const completed_time = new Date(Date.now())
+        const original = await this.task_management_table_model.findOne({_id: _id});
+
+        const elapsed_time = Math.round((completed_time.getTime() - original.started_at.getTime()) / (1000 * 60));
+        
+        // console.log("1 , 2", completed_time.getTime() , original.started_at.getTime());
+        
+        console.log("elapsed_time : ", elapsed_time);
+        
+        // const original_created_at = original_row.createdAt;
+        // console.log("original_created_at : ", original_created_at);
+        // console.log("elapsed_time : ", new Date(Date.now())- original_created_at)
+        
+
+
         const filter = { _id: _id };
         const update = { 
             task_status: task_status,
-            completed_at: new Date(Date.now())
+            completed_at: new Date(Date.now()),
+            elapsed_time: elapsed_time
         };
 
         // `doc` is the document _before_ `update` was applied

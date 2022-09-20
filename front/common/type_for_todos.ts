@@ -1,4 +1,6 @@
 export interface type_for_todo_row {
+    elapsed_time: number;
+    started_at: Date;
     _id: string;
     id: string | number;
     todo: string;
