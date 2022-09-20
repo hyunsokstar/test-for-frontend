@@ -40,7 +40,10 @@ export class MilestonsRepository {
         // throw new Error('Method not implemented.');
 
         const filter = { _id: _id };
-        const update = { task_status: task_status };
+        const update = { 
+            task_status: task_status,
+            completed_at: new Date(Date.now())
+        };
 
         // `doc` is the document _before_ `update` was applied
         return await this.task_management_table_model.findOneAndUpdate(filter, update);
@@ -48,7 +51,6 @@ export class MilestonsRepository {
     }
 
     async investigate_existence_by_id_for_save_rows_for_task_management_table(id: any) {
-
         const result = await this.task_management_table_model.exists({ _id: id });
         if (result) return true
         else return false

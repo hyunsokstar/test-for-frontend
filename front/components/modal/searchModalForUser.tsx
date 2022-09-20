@@ -5,7 +5,6 @@ import DataGrid from 'react-data-grid';
 import axios from "axios";
 import api from "../../utils/api"
 import Pagination from '@material-ui/lab/Pagination'
-import TextEditor from "../../components/util/TextEditor"
 import { selectEditor, selectFormatter } from '../../common/editor_mapping';
 import { SelectColumn } from "react-data-grid";
 import taskBoardSlice from '../../slices/task_board';
@@ -31,16 +30,12 @@ const customStyles = {
         top: '50%',
         left: '50%',
         right: 'auto',
-        // bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        // padding: "auto",
-        // width: "60%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        // height: "100%"
     },
 };
 

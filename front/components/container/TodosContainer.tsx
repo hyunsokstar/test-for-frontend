@@ -17,6 +17,7 @@ type Props = {}
 // }
 
 interface todo_type_from_server {
+    completed_at: string | number | Date
     _id: string | number;
     task_title: string;
     task_status: string;
@@ -57,14 +58,15 @@ function TodosContainer({ }: Props) {
                         id: row._id,
                         todo: row.task_title,
                         task_status: row.task_status,
-                        createdAt: new Date(row.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase()
+                        createdAt: new Date(row.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
+                        completed_at  : row.completed_at ? new Date(row.completed_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() : ""
+
                     }
                 })
                 set_data_for_todos(new_todos);
             } else {
                 set_data_for_todos(sample_todos)
             }
-
 
             // setPageInfo({ page: response.data.data.current_page, total: response.data.data.total_page })   
         } catch (error) {
@@ -82,7 +84,6 @@ function TodosContainer({ }: Props) {
         console.log("response.data.data._id : ", response.data.data._id);
         set_data_for_todos((prev: Array<type_for_todo_row>) =>
             [...prev, { id: response.data.data._id, todo: response.data.data.task_title, createdAt: new Date(response.data.data.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() }]);
-
 
     }
 
@@ -210,8 +211,6 @@ function TodosContainer({ }: Props) {
             border: "0px solid blue",
             width: "100%",
             margin: "auto",
-            // border:"10px solid pink"
-            // gap: '5px'
         }}>
 
             <div style={{ padding: "0px", marginBottom: "10px", borderBottom: "1px solid #e4dedeff" }}>

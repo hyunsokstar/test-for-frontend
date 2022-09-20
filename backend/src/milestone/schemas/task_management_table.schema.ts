@@ -3,7 +3,6 @@ import { Document, SchemaOptions } from 'mongoose';
 import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 // import { ApiProperty } from "@nestjs/swagger";
 
-
 const options: SchemaOptions = {
   timestamps: true,
 };
@@ -20,9 +19,12 @@ export class task_management_table extends Document {
     required: true,
   })
 
-
   @Prop()
   task_status: boolean;
+
+  // @Prop()
+  @Prop({ type: Date, required: false })
+  completed_at: Date;
 
   readonly readOnlyData: {
     task_title: string;

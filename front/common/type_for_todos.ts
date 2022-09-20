@@ -4,4 +4,5 @@ export interface type_for_todo_row {
     todo: string;
     task_status: boolean;
     createdAt: string;
+    completed_at: string;
 }
