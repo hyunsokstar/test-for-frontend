@@ -7,6 +7,11 @@ import { task_management_table } from '../schemas/task_management_table.schema';
 
 @Injectable()
 export class MilestonsRepository {
+    async delete_row_for_task_management_table(id_for_delete: any) {
+        // throw new Error('Method not implemented.'); 
+        return await this.task_management_table_model.deleteOne({ _id: id_for_delete });
+
+    }
 
     async delete_todos_for_rows_for_task_management_table(ids_for_delete_todos: any) {
         console.log("ids_for_delete_todos : ", ids_for_delete_todos);
@@ -36,7 +41,7 @@ export class MilestonsRepository {
 
         const filter = { _id: _id };
         const update = { task_status: task_status };
-        
+
         // `doc` is the document _before_ `update` was applied
         return await this.task_management_table_model.findOneAndUpdate(filter, update);
 

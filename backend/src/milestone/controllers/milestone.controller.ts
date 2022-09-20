@@ -43,7 +43,26 @@ export class MilestoneController {
     async update_task_status(@Body() data) {
         const { _id, task_status } = data;
         return this.milestoneService.update_task_status_by_id(_id, task_status);
+    }
+
+    @Post("delete_row_for_task_management_table")
+    async delete_row_for_task_management_table(@Body() data) {
+        console.log("data : ", data);
+        const { id_for_delete } = data;
+        console.log("id_for_delete : ", id_for_delete);
+        return this.milestoneService.delete_row_for_task_management_table(id_for_delete);
 
     }
+
+    // @Post("deleteMembers")
+    // async deleteMultiUsers(@Body() data) {
+    //   console.log("유저 테이블 정보 저장 check !!");
+    //   // console.log("body data : ", data);
+
+    //   const ids_for_delete_users = data 
+    //   console.log("ids_for_delete_users : ", ids_for_delete_users);
+
+    //   return this.CatsService.deleteMultiUsers(ids_for_delete_users);
+    // }
 
 }

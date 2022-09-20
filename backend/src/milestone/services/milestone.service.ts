@@ -5,6 +5,11 @@ import mongoose from 'mongoose';
 
 @Injectable()
 export class MilestoneService {
+    async delete_row_for_task_management_table(id_for_delete: any) {
+        // throw new Error('Method not implemented.');
+        console.log("id_for_delete : ", id_for_delete);
+        return await this.milestoneRepository.delete_row_for_task_management_table(id_for_delete)
+    }
     constructor(
         private readonly milestoneRepository: MilestonsRepository
     ) { }
@@ -12,10 +17,10 @@ export class MilestoneService {
     async update_task_status_by_id(_id: any, task_status: any) {
         // throw new Error('Method not implemented.');
         console.log("_id at service: ", _id);
-        console.log("task_status at service: ", task_status);
+        // console.log("task_status at service: ", task_status);
         const result = await this.milestoneRepository.update_task_status_by_id(_id, task_status);
-        
-        
+
+
     }
 
     async delete_todos_for_rows_for_task_management_table(ids_for_delete_todos: any) {

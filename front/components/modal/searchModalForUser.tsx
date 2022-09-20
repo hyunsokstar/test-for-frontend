@@ -330,7 +330,6 @@ function searchModalForUser({ row, column, onRowChange }: any) {
                         //     setSelectedRows(row)
                         // }}
                         onRowClick={check_and_set_color_for_row}
-                        // onClick ={check_and_set_color_for_row}
                     />
 
                     <div>

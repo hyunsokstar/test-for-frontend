@@ -65,7 +65,7 @@ export class CatsRepository {
             columns_list
         }
     }
-    
+
     async findAllColumnsWithoutPagination(table_name) {
         // const total_count = await this.columnsTableModel.find({ table_name: table_name }).count()
         // console.log("total_count, limit : ", total_count, limit);
@@ -133,7 +133,6 @@ export class CatsRepository {
     }
 
     async deleteUsersByIdsArray(ids_for_delete: []) {
-
         console.log("ids_for_delete : ", ids_for_delete);
         const result = await this.catModel.deleteMany(
             {
@@ -305,7 +304,7 @@ export class CatsRepository {
 
     async getAllTodosForUsersTable(pageNum, limit) {
         console.log("getAllTodosForUsersTable 실행 확인 !");
-        
+
         console.log("limit : ", limit);
         console.log("pageNum : ", pageNum);
 

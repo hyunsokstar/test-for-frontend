@@ -56,7 +56,7 @@ function TodosContainer({ }: Props) {
                     return {
                         id: row._id,
                         todo: row.task_title,
-                        task_status:row.task_status,
+                        task_status: row.task_status,
                         createdAt: new Date(row.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase()
                     }
                 })
@@ -95,22 +95,22 @@ function TodosContainer({ }: Props) {
         } else {
             todo = todoData
         }
-        // const time = await new Date();
-        // const create_at_for_row = time.toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase();
 
         if (e.key == 'Enter') {
+            console.log("e : ", e);
+            
             todo = e.target.value;
-            if (todo === "") {
+            if (e.target.value == undefined) {
                 alert("할일을 입력해 주세요")
             } else {
                 // alert("add_todo 실행 !!!!!!!!!!")
                 save_request_to_server(todo);
                 setInputValue("")
             }
-        }  
+        }
         else if (e.key === "icon") {
             // console.log("e: ", e);
-            
+
             if (todo !== "") {
                 // set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
                 save_request_to_server(todo);
@@ -125,7 +125,7 @@ function TodosContainer({ }: Props) {
 
         const response = await axios.post(
             `${api.milestone}/delete_todos_for_rows_for_task_management_table`,
-            delete_ids ,
+            delete_ids,
             { withCredentials: true }
         );
 
@@ -184,6 +184,26 @@ function TodosContainer({ }: Props) {
 
     }
 
+    const delete_handler = async (id: string | number) => {
+        console.log("delete button id : ", id);
+
+        const response = await axios.post(
+            `${api.milestone}/delete_row_for_task_management_table`,
+            { id_for_delete: id },
+            { withCredentials: true }
+        );
+        console.log("response : ", response);
+        console.log("response.data.data : ", response.data.data);
+
+        const new_rows_for_todo = data_for_todos.filter((row:type_for_todo_row)=> {
+            if(row.id !== id){
+                return row
+            }
+        })
+
+        set_data_for_todos(new_rows_for_todo)
+    }
+
     return (
         <div style={{
             display: "flex",
@@ -203,7 +223,7 @@ function TodosContainer({ }: Props) {
             </div>
 
             <div>
-                <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list} />
+                <TodoList data_for_todos={data_for_todos} checkHandler={checkHandler} checked_list={checked_list}  delete_handler= {delete_handler} />
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", marginTop: "90px" }}>
