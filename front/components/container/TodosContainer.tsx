@@ -103,7 +103,6 @@ function TodosContainer({ }: Props) {
             if (e.target.value == undefined) {
                 alert("할일을 입력해 주세요")
             } else {
-                // alert("add_todo 실행 !!!!!!!!!!")
                 save_request_to_server(todo);
                 setInputValue("")
             }
