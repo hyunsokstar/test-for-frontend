@@ -48,8 +48,6 @@ function TodosContainer({ }: Props) {
                 `${api.milestone}/`,
                 { withCredentials: true }
             );
-            // const rows_data = response.data.data.rows_for_grid
-            console.log("response : ", response.data.data);
 
             if (response.data.success) {
                 const todo_data = response.data.data;
@@ -89,16 +87,8 @@ function TodosContainer({ }: Props) {
     }
 
     const add_todo = async (e: any, todoData: string) => {
-        console.log("e: ", e);
-        // e.preventDefault();
-        
-
-        // alert("add_todo 실행 !!!!!!!!!!")
-
         const randomId = Math.random();
         console.log("typeof randomId : ", typeof randomId);
-        // console.log("e: ", e.target.value);
-        // console.log("todoData : ", todoData);
 
         let todo: string;
         if (todoData === "") {
