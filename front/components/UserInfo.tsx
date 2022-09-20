@@ -25,7 +25,6 @@ const UserInfo = ({ user_data, setSelectedRowNum, setSelectedRows, selectedRowNu
 
 
     function handleCheck(e: React.ChangeEvent<HTMLInputElement>) {
-        console.log("e : ", e);
 
         setSelectedRowNum(parseInt(e.target.value));
     }

@@ -10,9 +10,7 @@ type Props = {
 
 function SwitchButton({ task_status, rowId }: Props) {
     const [checked, setChecked] = React.useState(task_status);
-
-    console.log("rowId : ", rowId);
-
+    // console.log("rowId : ", rowId);
 
     const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log("스위치 버튼 클릭");

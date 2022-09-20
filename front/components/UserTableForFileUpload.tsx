@@ -252,8 +252,6 @@ function UserTableForFileUpload({ searchResult }: IProps) {
         //@ts-ignore
         setSelectList={setSelectList}
         setRow={(e) => {
-          console.log("e : ", e);
-
           let tmp: Set<any> = selectList;
           e.map((v, i) => {
             if (v.isChange) {

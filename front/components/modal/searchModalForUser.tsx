@@ -287,9 +287,7 @@ function searchModalForUser({ row, column, onRowChange }: any) {
     }, [selectedRows_for_users_table])
 
     const check_and_set_color_for_row = (e:any) => {
-        console.log("e : ", e);
-        console.log("e : ", e._id);
-        console.log("selectedRows : ", selectedRows);
+        // console.log("selectedRows : ", selectedRows);
         let tmp: Set<any> = new Set(selectedRows);
         
         if(selectedRows.has(e._id)){
