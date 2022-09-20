@@ -43,8 +43,9 @@ export class MilestonsRepository {
 
         const completed_time = new Date(Date.now())
         const original = await this.task_management_table_model.findOne({_id: _id});
+        const started_at = original.started_at ? original.started_at : new Date(Date.now())
 
-        const elapsed_time = Math.round((completed_time.getTime() - original.started_at.getTime()) / (1000 * 60));
+        const elapsed_time = Math.round((completed_time.getTime() - started_at.getTime()) / (1000 * 60));
         
         // console.log("1 , 2", completed_time.getTime() , original.started_at.getTime());
         
@@ -59,13 +60,16 @@ export class MilestonsRepository {
         const filter = { _id: _id };
         const update = { 
             task_status: task_status,
+            started_at: original.started_at,
+            elapsed_time: elapsed_time,
             completed_at: new Date(Date.now()),
-            elapsed_time: elapsed_time
         };
 
         // `doc` is the document _before_ `update` was applied
-        return await this.task_management_table_model.findOneAndUpdate(filter, update);
-
+        await this.task_management_table_model.findOneAndUpdate(filter, update);
+        const response = await this.task_management_table_model.findOne({_id: _id});
+        console.log("response : ", response);
+        return response;
     }
 
     async investigate_existence_by_id_for_save_rows_for_task_management_table(id: any) {

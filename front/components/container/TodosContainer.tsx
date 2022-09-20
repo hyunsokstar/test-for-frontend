@@ -61,8 +61,8 @@ function TodosContainer({ }: Props) {
                         todo: row.task_title,
                         task_status: row.task_status,
                         started_at: new Date(row.started_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
-                        completed_at  : row.completed_at ? new Date(row.completed_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() : "",
-                        elapsed_time: row.elapsed_time ? row.elapsed_time : ""
+                        elapsed_time: row.elapsed_time ? row.elapsed_time : "",
+                        completed_at: row.completed_at ? new Date(row.completed_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() : ""
                     }
                 })
                 set_data_for_todos(new_todos);
@@ -85,7 +85,14 @@ function TodosContainer({ }: Props) {
         });
         console.log("response.data.data._id : ", response.data.data._id);
         set_data_for_todos((prev: Array<type_for_todo_row>) =>
-            [...prev, { id: response.data.data._id, todo: response.data.data.task_title, createdAt: new Date(response.data.data.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase() }]);
+            [...prev,
+            {
+                id:response.data.data._id, 
+                todo: response.data.data.task_title, 
+                started_at: new Date(response.data.data.started_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
+                elapsed_time: response.data.data.elapsed_time
+                // createdAt: new Date(response.data.data.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase()
+            }]);
 
     }
 
@@ -101,7 +108,7 @@ function TodosContainer({ }: Props) {
 
         if (e.key == 'Enter') {
             console.log("e : ", e);
-            
+
             todo = e.target.value;
             if (e.target.value == undefined) {
                 alert("할일을 입력해 주세요")
@@ -197,8 +204,8 @@ function TodosContainer({ }: Props) {
         console.log("response : ", response);
         console.log("response.data.data : ", response.data.data);
 
-        const new_rows_for_todo = data_for_todos.filter((row:type_for_todo_row)=> {
-            if(row.id !== id){
+        const new_rows_for_todo = data_for_todos.filter((row: type_for_todo_row) => {
+            if (row.id !== id) {
                 return row
             }
         })
@@ -223,7 +230,7 @@ function TodosContainer({ }: Props) {
             </div>
 
             <div>
-                <TodoList data_for_todos={data_for_todos} set_data_for_todos = {set_data_for_todos} checkHandler={checkHandler} checked_list={checked_list}  delete_handler= {delete_handler} />
+                <TodoList data_for_todos={data_for_todos} set_data_for_todos={set_data_for_todos} checkHandler={checkHandler} checked_list={checked_list} delete_handler={delete_handler} />
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", marginTop: "90px" }}>
