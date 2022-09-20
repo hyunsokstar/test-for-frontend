@@ -7,18 +7,18 @@ import { task_management_table } from '../schemas/task_management_table.schema';
 
 @Injectable()
 export class MilestonsRepository {
+
     async delete_todos_for_rows_for_task_management_table(ids_for_delete_todos: any) {
         console.log("ids_for_delete_todos : ", ids_for_delete_todos);
 
-        ids_for_delete_todos.map((el)=> {
-            if( !mongoose.Types.ObjectId.isValid(el) ) {
+        ids_for_delete_todos.map((el) => {
+            if (!mongoose.Types.ObjectId.isValid(el)) {
                 console.log("유효하지 않습니다 !");
             } else {
                 console.log("유효 합니다 ");
-                
+
             }
         })
-
 
         const result = await this.task_management_table_model.deleteMany(
             {
@@ -30,6 +30,18 @@ export class MilestonsRepository {
         return result;
 
     }
+
+    async update_task_status_by_id(_id: any, task_status: any) {
+        // throw new Error('Method not implemented.');
+
+        const filter = { _id: _id };
+        const update = { task_status: task_status };
+        
+        // `doc` is the document _before_ `update` was applied
+        return await this.task_management_table_model.findOneAndUpdate(filter, update);
+
+    }
+
     async investigate_existence_by_id_for_save_rows_for_task_management_table(id: any) {
 
         const result = await this.task_management_table_model.exists({ _id: id });

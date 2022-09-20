@@ -29,7 +29,7 @@ export class MilestoneController {
     async save_rows_for_task_management_table(@Body() data) {
         console.log("data for save_rows_for_task_management_table : ", data);
         const save_result_for_task_management_table = await this.milestoneService.save_rows_for_task_management_table(data);
-        console.log("save_result_for_task_management_table : "+ save_result_for_task_management_table);
+        console.log("save_result_for_task_management_table : " + save_result_for_task_management_table);
         return save_result_for_task_management_table;
     }
 
@@ -37,8 +37,15 @@ export class MilestoneController {
     async delete_todos_for_rows_for_task_management_table(@Body() data) {
         const ids_for_delete_todos = data
         // console.log("ids_for_delete_todos : ", ids_for_delete_todos);
-          return this.milestoneService.delete_todos_for_rows_for_task_management_table(ids_for_delete_todos);
+        return this.milestoneService.delete_todos_for_rows_for_task_management_table(ids_for_delete_todos);
         // return "삭제 성공 !!"
+    }
+
+    @Post("update_task_status")
+    async update_task_status(@Body() data) {
+        const { _id, task_status } = data;
+        return this.milestoneService.update_task_status_by_id(_id, task_status);
+
     }
 
 }

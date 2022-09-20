@@ -25,19 +25,17 @@ type Props = {
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-
 function TodoList({ data_for_todos, checkHandler, checked_list }: Props) {
     // console.log("checked_list : ", checked_list);
 
     const todorow = (row: type_for_todo_row) => {
         console.log("row : ", row);
-
         return (
             <div style={{ display: "flex", justifyContent: "space-around" }} key={row.id}>
                 <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} style={{ color: "#FC6E6F" }} />
                 <ListItemText id={row.id} primary={row.todo} style={{ textDecoration: checked_list.includes(row.id) && 'line-through', flex: 3 }} />
                 <ListItemText style={{ flex: 1, textAlign: "middle" }}>
-                    <SwitchButton task_status={row.task_status} />
+                    <SwitchButton task_status={row.task_status} rowId = {row.id} />
                 </ListItemText>
                 <div edge="end" style={{ float: "right", marginRight: "10px" }}> {row.createdAt} </div>
             </div>
