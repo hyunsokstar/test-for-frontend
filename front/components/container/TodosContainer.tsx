@@ -88,7 +88,6 @@ function TodosContainer({ }: Props) {
 
     const add_todo = async (e: any, todoData: string) => {
         const randomId = Math.random();
-        console.log("typeof randomId : ", typeof randomId);
 
         let todo: string;
         if (todoData === "") {
@@ -109,17 +108,17 @@ function TodosContainer({ }: Props) {
                 setInputValue("")
             }
         }  
-        // else if (e.key === "icon") {
-        //     // console.log("e: ", e);
+        else if (e.key === "icon") {
+            // console.log("e: ", e);
             
-        //     if (todo !== "") {
-        //         // set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
-        //         save_request_to_server(todo);
-        //         setInputValue("")
-        //     } else {
-        //         alert("할일을 입력해 주세요 !")
-        //     }
-        // }
+            if (todo !== "") {
+                // set_data_for_todos((prev: Array<type_for_todo_row>) => [...prev, { id: String(randomId), todo: todo, createdAt: create_at_for_row }]);
+                save_request_to_server(todo);
+                setInputValue("")
+            } else {
+                alert("할일을 입력해 주세요 !")
+            }
+        }
     }
 
     const delete_request_to_server = async (delete_ids: Array<string | number>) => {
