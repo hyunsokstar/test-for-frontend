@@ -30,13 +30,17 @@ function TodoList({ data_for_todos, checkHandler, checked_list }: Props) {
 
     const todorow = (row: type_for_todo_row) => {
         return (
-            <div style={{ display: "flex", justifyContent: "space-around" }} key={row.id}>
-                <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} style={{ color: "#FC6E6F" }} />
+            <div style={{ display: "flex", justifyContent: "space-around", alignItems:"center" }} key={row.id}>
+                <ListItemText>
+                    <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} style={{ color: "#FC6E6F" }} />
+                </ListItemText>
                 <ListItemText id={row.id} primary={row.todo} style={{ textDecoration: checked_list.includes(row.id) && 'line-through', flex: 3 }} />
                 <ListItemText style={{ flex: 1, textAlign: "middle" }}>
-                    <SwitchButton task_status={row.task_status} rowId = {row.id} />
+                    <SwitchButton task_status={row.task_status} rowId={row.id} />
                 </ListItemText>
-                <div edge="end" style={{ float: "right", marginRight: "10px" }}> {row.createdAt} </div>
+                <ListItemText>
+                    <div edge="end" style={{ float: "right", marginRight: "10px" }}> {row.createdAt} </div>
+                </ListItemText>
             </div>
         )
     }
