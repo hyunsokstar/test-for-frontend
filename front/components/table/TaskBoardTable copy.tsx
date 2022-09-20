@@ -144,9 +144,8 @@ function TaskBoardTable({ }: Props) {
     /** rowsForTaskBoard 에 데이터를 저장하기 위한 함수 www.daum.net */
     // 2244
     const saveRowForTaskBoard = async () => {
-        console.log("saveRowForTaskBoard click check");
-        console.log("selectedRows : ", selectedRows);
-        console.log("basicRow : ", basicRows);
+        // console.log("selectedRows : ", selectedRows);
+        // console.log("basicRow : ", basicRows);
 
         if (selectedRows.size == 0) {
             alert("1행 이상 선택해주세요 ");
@@ -191,7 +190,7 @@ function TaskBoardTable({ }: Props) {
 
         try {
             const rows_for_delete = basicRows.filter((row: any) => {
-                console.log("row : ", row);
+                // console.log("row : ", row);
 
                 if (selectedRows.has(row._id)) {
                     return row._id

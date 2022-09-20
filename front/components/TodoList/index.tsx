@@ -29,7 +29,6 @@ function TodoList({ data_for_todos, checkHandler, checked_list }: Props) {
     // console.log("checked_list : ", checked_list);
 
     const todorow = (row: type_for_todo_row) => {
-        console.log("row : ", row);
         return (
             <div style={{ display: "flex", justifyContent: "space-around" }} key={row.id}>
                 <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} style={{ color: "#FC6E6F" }} />

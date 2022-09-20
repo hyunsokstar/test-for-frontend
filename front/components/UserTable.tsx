@@ -98,8 +98,6 @@ function UserTable() {
     let missed_field: string | any[] = [];
 
     basicRow.map((row) => {
-      // console.log("row : ", row);
-
 
       if (row.password !== row.passwordCheck) {
         alert("비밀번호와 비밀번호 확인이 일치 하지 않습니다");
@@ -159,13 +157,10 @@ function UserTable() {
 
   const deleteUserForCheck = async () => {
     console.log("삭제 버튼 클릭");
-    console.log("basicRow : ", basicRow);
-
+    // console.log("basicRow : ", basicRow);
 
     try {
       const rows_for_delete = basicRow.filter((row) => {
-        // console.log("row : ", row);
-
         if (selectList.has(row.id)) {
           return row._id
         }

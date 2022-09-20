@@ -164,7 +164,6 @@ const MemberTable = (props: Props) => {
     try {
 
       const rows_for_delete = basicRows.filter((row: any) => {
-        console.log("row : ", row);
 
         if (selectList.has(row._id)) {
           return row._id
@@ -268,12 +267,10 @@ const MemberTable = (props: Props) => {
           rows={basicRows} style={{ width: "100%" }}
           onRowsChange={(data, idx) => { onRowsChangeHandler(data, idx) }}
           rowKeyGetter={(row) => {
-            console.log("row : ", row);
             return row._id;
           }}
           selectedRows={selectList}
           onSelectedRowsChange={(row) => {
-            console.log("row : ", row);
             setSelectList(row);
           }}
           onColumnResize={

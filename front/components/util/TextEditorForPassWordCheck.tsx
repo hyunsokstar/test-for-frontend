@@ -14,7 +14,6 @@ const Input = styled.input`
 
 const TextEditorForPassWordCheck = ({ row, column, onRowChange, onClose }: any) => {
 
-    // console.log("row : ", row);
     const [inputColor, setInputColor] = useState("");
 
 
@@ -24,8 +23,7 @@ const TextEditorForPassWordCheck = ({ row, column, onRowChange, onClose }: any) 
                 type="text"
                 onChange={(event) => {
                     let eventValue = event.target.value
-                    console.log("eventValue : ", eventValue);
-                    console.log("row : ", row);
+                    // console.log("eventValue : ", eventValue);
 
                     if (row.password !== event.target.value) {
                         console.log("검증 비통과");

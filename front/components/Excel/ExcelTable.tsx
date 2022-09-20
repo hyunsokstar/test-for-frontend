@@ -40,7 +40,6 @@ const ExcelTable = ({ data_for_rows, data_for_columns, setRow, selectList, setSe
                     setRow(data, idx.indexes[0])
                 }}
                 onSelectedRowsChange={(row) => {
-                    console.log("row : ", row);
                     setSelectedRows(row)
                 }}
                 selectedRows={selectedRows}
