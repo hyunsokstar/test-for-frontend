@@ -38,7 +38,7 @@ function TodoList({ data_for_todos, checkHandler, checked_list, delete_handler, 
 
     const todorow = (row: type_for_todo_row) => {
         return (
-            <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", verticalAlign: "middle", textDecoration: row.task_status &&  "line-through"  }} key={row.id}>
+            <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", verticalAlign: "middle", textDecoration: checked_list.includes(row.id) &&  "line-through"  }} key={row.id}>
                 <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} />
                 <ListItemText id={row.id} primary={row.todo} style={{ textDecoration: checked_list.includes(row.id) && 'line-through' }} />
                 <div style={{ width: "200px" }}>

@@ -7,6 +7,12 @@ import { task_management_table } from '../schemas/task_management_table.schema';
 
 @Injectable()
 export class MilestonsRepository {
+    async delete_all_todos_for_task_management_table () {
+        // throw new Error('Method not implemented.');
+        return await this.task_management_table_model.deleteMany({});
+        // 출처: https://progdev.tistory.com/45 [플머의 개발 연구소:티스토리]
+        
+    }
     async delete_row_for_task_management_table(id_for_delete: any) {
         // throw new Error('Method not implemented.'); 
         return await this.task_management_table_model.deleteOne({ _id: id_for_delete });

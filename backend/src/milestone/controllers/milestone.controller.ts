@@ -52,7 +52,10 @@ export class MilestoneController {
         const { id_for_delete } = data;
         console.log("id_for_delete : ", id_for_delete);
         return this.milestoneService.delete_row_for_task_management_table(id_for_delete);
-
+    }
+    @Post("delete_all_todos_for_task_management_table")
+    async delete_all_todos_for_task_management_table(@Body() data) {
+        return this.milestoneService.delete_all_todos_for_task_management_table();
     }
 
     // @Post("deleteMembers")

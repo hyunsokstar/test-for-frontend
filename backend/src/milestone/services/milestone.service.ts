@@ -5,6 +5,11 @@ import mongoose from 'mongoose';
 
 @Injectable()
 export class MilestoneService {
+    async delete_all_todos_for_task_management_table() {
+        return await this.milestoneRepository.delete_all_todos_for_task_management_table()
+
+        // throw new Error('Method not implemented.');
+    }
     async delete_row_for_task_management_table(id_for_delete: any) {
         // throw new Error('Method not implemented.');
         console.log("id_for_delete : ", id_for_delete);

@@ -7,6 +7,8 @@ import BottomContainer from '../Bottom'
 import axios from "axios";
 import api from "../../utils/api"
 import { type_for_todo_row } from "../../common/type_for_todos"
+import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
+
 
 type Props = {}
 
@@ -43,6 +45,38 @@ function TodosContainer({ }: Props) {
         get_data_for_todos();
     }, [])
 
+    const delete_all_todos_request_to_server = async () => {
+        try {
+            const response = await axios.post(`${api.milestone}/delete_all_todos_for_task_management_table`, {}, {
+                withCredentials: true,
+            });
+            console.log("response.data.data : ", response.data.data);
+        } catch (error) {
+            console.log("error : ", error);
+        }
+
+    }
+
+    const all_clear_for_todos = () => {
+
+        Confirm.show(
+            'Notiflix Confirm',
+            'Do you agree with me?',
+            'Yes',
+            'No',
+            () => {
+                // alert('Thank you.');
+                delete_all_todos_request_to_server()
+                set_data_for_todos([])
+            },
+            () => {
+                // alert('If you say so...');
+            },
+            {
+            },
+        );
+
+    }
 
     const get_data_for_todos = async () => {
         // console.log("hi");
@@ -87,8 +121,8 @@ function TodosContainer({ }: Props) {
         set_data_for_todos((prev: Array<type_for_todo_row>) =>
             [...prev,
             {
-                id:response.data.data._id, 
-                todo: response.data.data.task_title, 
+                id: response.data.data._id,
+                todo: response.data.data.task_title,
                 started_at: new Date(response.data.data.started_at).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase(),
                 elapsed_time: response.data.data.elapsed_time
                 // createdAt: new Date(response.data.data.createdAt).toLocaleTimeString("en", { hour: '2-digit', minute: '2-digit' }).toLowerCase()
@@ -150,6 +184,8 @@ function TodosContainer({ }: Props) {
 
         // console.log("        checked_list : ", checked_list);
         // console.log("checked_id : ", checked_id);
+
+
 
 
         if (checked) {
@@ -223,7 +259,7 @@ function TodosContainer({ }: Props) {
         }}>
 
             <div style={{ padding: "0px", marginBottom: "10px", borderBottom: "1px solid #e4dedeff" }}>
-                <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} dayIndex={0} utc_datetime={0} />
+                <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} dayIndex={0} utc_datetime={0} checked_list={checked_list} all_clear_for_todos={all_clear_for_todos} />
             </div>
             <div>
                 <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />

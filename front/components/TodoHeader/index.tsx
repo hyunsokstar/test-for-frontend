@@ -7,13 +7,15 @@ type IProps = {
     utc_datetime: number,
     task_of_number: number,
     clearButtonHandler: () => void
+    checked_list: Array<string | number>
+    all_clear_for_todos: () => void
 }
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
 
-const TodoHeader = ({ dayIndex, utc_datetime, task_of_number, clearButtonHandler }: IProps) => {
+const TodoHeader = ({ dayIndex, utc_datetime, task_of_number, clearButtonHandler, checked_list, all_clear_for_todos }: IProps) => {
     const [dayOfWeeksArray, setdayOfWeeksArray] = useState(["Sun", "Mon", "Tusday", "Wed", "Thu", "Fri", "Sat"])
     var localDate = new Date(utc_datetime);
     const dayNum = localDate.getDate();
@@ -34,20 +36,24 @@ const TodoHeader = ({ dayIndex, utc_datetime, task_of_number, clearButtonHandler
                     {monthNames[MonthNum]}
                 </div>
                 <div>
-                    {/* <Button
-                        variant="contained"
-                        // onClick={clearButtonHandler}
-                        style={{ backgroundColor: "blue", color: "white" }}
-                    >
-                        저장
-                    </Button> */}
-
+                    {
+                        checked_list.length > 0 ?
+                            <Button
+                                variant="contained"
+                                onClick={clearButtonHandler}
+                                style={{ backgroundColor: "#FC6E6F", color: "white" }}
+                            >
+                                Clear for check
+                            </Button>
+                            :
+                            ""
+                    }
                     <Button
                         variant="contained"
-                        onClick={clearButtonHandler}
-                        style={{ backgroundColor: "#FC6E6F", color: "white" }}
+                        onClick={all_clear_for_todos}
+                        style={{ backgroundColor: "lightblue", color: "black" }}
                     >
-                        Clear List
+                        AllClear
                     </Button>
                 </div>
             </div>
