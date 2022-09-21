@@ -41,7 +41,7 @@ const TodoHeader = ({ dayIndex, utc_datetime, task_of_number, clearButtonHandler
                             <Button
                                 variant="contained"
                                 onClick={clearButtonHandler}
-                                style={{ backgroundColor: "#FC6E6F", color: "white" }}
+                                style={{ backgroundColor: "#FC6E6F", color: "white", margin:"0px 10px" }}
                             >
                                 Clear for check
                             </Button>

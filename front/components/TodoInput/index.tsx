@@ -50,8 +50,8 @@ function TodoInput({ add_todo, inputValue, setInputValue }: Props) {
   }
 
   return (
-    <div style={{ display: "flex",padding:"10px", borderBottom: "1px solid #F7F8FE" , margin:"0px", borderBottom:"1px solid #e4dedeff"}}>
-      <div style={{ backgroundColor: "white", display: "flex", textAlign: "center", alignItems: "center", paddingLeft: "10px" }} >
+    <div style={{ display: "flex",padding:"5px", borderBottom: "1px solid #F7F8FE" , margin:"0px", borderBottom:"1px solid #e4dedeff"}}>
+      <div style={{ backgroundColor: "white", display: "flex", textAlign: "center", alignItems: "center",padding:"2px 10px 5px 2px" }} >
         <AddIcon style={{ opacity: "0.6" }} onClick={add_todo2} className={classes.iconForInputEnter}/>
         <input
           ref={inputRef}

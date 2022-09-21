@@ -8,7 +8,8 @@ import axios from "axios";
 import api from "../../utils/api"
 import { type_for_todo_row } from "../../common/type_for_todos"
 import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
-
+import ToDoColumns from '../TodoColumns'
+// ToDoColumns
 
 type Props = {}
 
@@ -258,14 +259,18 @@ function TodosContainer({ }: Props) {
             margin: "auto",
         }}>
 
+
+
             <div style={{ padding: "0px", marginBottom: "10px", borderBottom: "1px solid #e4dedeff" }}>
                 <TodoHeader task_of_number={data_for_todos.length} clearButtonHandler={clearButtonHandler} dayIndex={0} utc_datetime={0} checked_list={checked_list} all_clear_for_todos={all_clear_for_todos} />
             </div>
+
             <div>
                 <TodoInput add_todo={add_todo} inputValue={inputValue} setInputValue={setInputValue} />
             </div>
 
             <div>
+                <ToDoColumns data_for_todos={data_for_todos} set_data_for_todos={set_data_for_todos} checkHandler={checkHandler} checked_list={checked_list} delete_handler={delete_handler} />
                 <TodoList data_for_todos={data_for_todos} set_data_for_todos={set_data_for_todos} checkHandler={checkHandler} checked_list={checked_list} delete_handler={delete_handler} />
             </div>
 

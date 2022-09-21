@@ -35,12 +35,24 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function TodoList({ data_for_todos, checkHandler, checked_list, delete_handler, set_data_for_todos }: Props) {
 
-
     const todorow = (row: type_for_todo_row) => {
         return (
-            <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", verticalAlign: "middle", textDecoration: checked_list.includes(row.id) &&  "line-through"  }} key={row.id}>
-                <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} />
-                <ListItemText id={row.id} primary={row.todo} style={{ textDecoration: checked_list.includes(row.id) && 'line-through' }} />
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    verticalAlign: "middle",
+                    textDecoration: checked_list.includes(row.id) && "line-through"
+                }}
+                key={row.id}
+
+            >
+                <div style={{ width: "200px" }}>
+                    <Checkbox {...label} id={row.id} onClick={checkHandler} key={row.id} checked={checked_list.includes(row.id) ? true : false}  />
+                </div>
+
+                <div style={{ width: "200px", textDecoration: checked_list.includes(row.id) && 'line-through' }} >{row.todo}</div>
                 <div style={{ width: "200px" }}>
                     <SwitchButton task_status={row.task_status} rowId={row.id} data_for_todos={data_for_todos} set_data_for_todos={set_data_for_todos} />
                 </div>
@@ -49,11 +61,13 @@ function TodoList({ data_for_todos, checkHandler, checked_list, delete_handler, 
                 <div style={{ width: "200px" }} > {row.task_status ? row.elapsed_time + "분" : "미정"} </div>
                 <div style={{ width: "200px" }} > {row.task_status ? row.completed_at : "uncompleted"} </div>
 
-                <Tooltip title="Delete">
-                    <IconButton>
-                        <DeleteIcon onClick={() => delete_handler(row.id)} />
-                    </IconButton>
-                </Tooltip>
+                <div style={{ width: "50px" }}>
+                    <Tooltip title="Delete">
+                        <IconButton>
+                            <DeleteIcon onClick={() => delete_handler(row.id)} />
+                        </IconButton>
+                    </Tooltip>
+                </div>
             </div>
         )
     }
